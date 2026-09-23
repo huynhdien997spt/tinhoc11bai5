@@ -31,8 +31,8 @@
 <div class="teacher" id="teacherPanel" role="dialog" aria-modal="true" aria-label="Teacher Mode"><div class="teacher-box"><div class="teacher-head"><div><div class="eyebrow" style="color:#147bd1">Bảng theo dõi</div><h2 style="margin:3px 0">Teacher Mode</h2></div><button class="secondary" id="teacherClose">Đóng ✕</button></div><div id="teacherContent"><label for="teacherPin">Mã giáo viên</label><div class="sim"><input id="teacherPin" type="password" style="max-width:260px" placeholder="Nhập mã giáo viên"><button class="primary" id="teacherUnlock">Mở bảng theo dõi</button></div><p class="hint">Mã mặc định: đổi trong hằng số TEACHER_PIN bên trong index.html. Đây chỉ là khóa giao diện cơ bản.</p></div></div></div><div class="toast" id="toast" role="status"></div>
 <script>
 // Cấu hình: dán URL Web App của Google Apps Script sau khi triển khai.
-const GOOGLE_SCRIPT_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE";
-const TEACHER_PIN = "2468";
+const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxo1laO8YCyO8OyF7DqRko20Phj4txgHIslv_oPmaa8krRzjPWDiim37n-B7PU6czU3/exec";
+const TEACHER_PIN = "GV2026";
 const devices=[{name:"Bàn phím",icon:"⌨️",kind:"Vào"},{name:"Chuột",icon:"🖱️",kind:"Vào"},{name:"Máy quét",icon:"📄",kind:"Vào"},{name:"Camera",icon:"📷",kind:"Vào"},{name:"Màn hình",icon:"🖥️",kind:"Ra"},{name:"Máy in",icon:"🖨️",kind:"Ra"},{name:"Máy chiếu",icon:"📽️",kind:"Ra"},{name:"USB Flash",icon:"💾",kind:"Hai chiều"}];
 const cableData=[{label:"Màn hình cũ",port:"VGA"},{label:"TV / máy chiếu mới",port:"HDMI"},{label:"USB Flash Drive",port:"USB"},{label:"Cáp mạng",port:"Ethernet"}];
 const quizData=[
