@@ -1,80 +1,378 @@
-<!doctype html>
-<html lang="vi">
-<head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#071b36"><meta name="description" content="Bài học Tin học 10 tương tác: kết nối máy tính với các thiết bị số.">
-<title>Bài 5 · Kết nối máy tính với thiết bị số</title>
+
+<!DOCTYPE html>
+<html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bài 5 – Kết nối máy tính với các thiết bị số</title>
 <style>
-:root{--navy:#071b36;--navy2:#0c2a4e;--blue:#147bd1;--cyan:#42d3df;--gold:#ffcb55;--paper:#f4f8fc;--ink:#142b43;--muted:#61768b;--line:#dbe6f0;--green:#147f67;--red:#ba4d4d;--shadow:0 16px 44px #102d4b14}*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #37b6d7;outline-offset:2px}.top{background:radial-gradient(ellipse at 80% -30%,#1f699e 0,transparent 55%),var(--navy);color:#fff;padding:18px max(22px,calc((100vw - 1120px)/2));display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px;font-weight:750}.brand-icon{width:42px;height:42px;border-radius:14px;background:#123c64;display:grid;place-items:center;color:var(--cyan);font-size:22px}.small{font-size:13px;color:#b8cadb}.teacher-link{border:1px solid #53718f;border-radius:999px;background:#ffffff0b;color:#e7f1fa;padding:9px 14px;font-size:14px}.wrap{width:min(1120px,calc(100% - 36px));margin:28px auto 70px}.welcome{background:linear-gradient(125deg,#092244,#0e4772);color:white;border-radius:24px;padding:clamp(26px,5vw,54px);display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;box-shadow:var(--shadow)}.eyebrow{color:var(--cyan);font-weight:750;letter-spacing:.1em;text-transform:uppercase;font-size:13px}.welcome h1{font-size:clamp(32px,5vw,52px);line-height:1.08;margin:14px 0}.welcome p{color:#cfdeeb;max-width:590px}.device-art{min-height:215px;display:grid;place-items:center;font-size:112px;position:relative}.device-art:after{content:"INPUT  →  PROCESS  →  OUTPUT";position:absolute;bottom:8px;color:#bcd4e4;font-size:12px;letter-spacing:.09em}.form-card{margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;display:flex;align-items:end;gap:14px;flex-wrap:wrap;box-shadow:var(--shadow)}label{display:block;font-size:14px;font-weight:700;margin-bottom:5px}.field{flex:1;min-width:190px}input,textarea,select{width:100%;border:1px solid #c7d5e2;border-radius:10px;background:white;padding:11px 12px;color:var(--ink)}.primary{border:0;background:var(--blue);color:#fff;border-radius:11px;padding:12px 18px;font-weight:750;box-shadow:0 5px 14px #147bd130}.primary:hover{background:#086cbe}.secondary{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:10px;padding:10px 14px;font-weight:700}.ghost{border:1px solid #d7e4ed;background:#f7fafc;color:#23435d;border-radius:9px;padding:8px 11px;font-weight:650}.resume{margin-top:12px;padding:13px 15px;background:#eaf6ff;border:1px solid #b9dffc;border-radius:12px;display:none}.lesson{display:none}.progress-card{background:white;border:1px solid var(--line);padding:15px 18px;border-radius:15px;display:flex;justify-content:space-between;align-items:center;gap:20px;box-shadow:var(--shadow)}.progress-meta{min-width:160px;font-weight:750}.bar{height:10px;background:#e8eff5;border-radius:9px;overflow:hidden;flex:1}.bar span{height:100%;display:block;width:0;background:linear-gradient(90deg,var(--blue),var(--cyan));transition:width .4s}.xp{background:#fff6dc;border:1px solid #f3d783;border-radius:999px;padding:7px 13px;font-weight:750;color:#704c00;white-space:nowrap}.tabs{display:flex;gap:8px;overflow:auto;margin:18px 0 14px;padding-bottom:5px}.tab{flex:1;min-width:128px;border:1px solid var(--line);background:#fff;padding:12px 10px;border-radius:13px;color:#36526b;text-align:left}.tab b{display:block;font-size:14px}.tab small{color:#6d8296}.tab.active{background:var(--navy2);border-color:var(--navy2);color:#fff}.tab.active small{color:#c7d9e8}.pane{display:none;background:#fff;border:1px solid var(--line);border-radius:20px;padding:clamp(20px,4vw,36px);box-shadow:var(--shadow)}.pane.active{display:block}.pane h2{margin:0 0 5px;font-size:clamp(24px,3vw,32px);color:#0a2a49}.lead{color:var(--muted);margin:0 0 22px}.subhead{font-size:19px;margin:24px 0 10px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.card{border:1px solid var(--line);background:#fbfdff;border-radius:15px;padding:16px}.card h3{font-size:17px;margin:5px 0}.icon{font-size:28px}.muted{color:var(--muted)}.activity{background:#f3f8fc;border:1px solid #dce8f1;border-radius:15px;padding:18px;margin:18px 0}.device-list{display:flex;flex-wrap:wrap;gap:9px;margin:13px 0}.device-chip{border:1px solid #c9d9e6;background:#fff;border-radius:11px;padding:9px 12px;font-weight:700}.device-chip.selected{border-color:var(--blue);background:#e8f5ff}.zones{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.zone{min-height:96px;padding:12px;border:2px dashed #aec4d6;border-radius:14px;background:#fbfdff;text-align:center}.zone strong{display:block;margin-bottom:4px}.feedback{margin-top:10px;font-weight:700;min-height:25px}.ok{color:var(--green)}.bad{color:var(--red)}.meterline{display:flex;align-items:center;gap:12px}.meterline input{padding:0}.cursor-demo{height:108px;border-radius:12px;background:linear-gradient(135deg,#e6f5ff,#f6fbff);position:relative;margin-top:12px;overflow:hidden;border:1px solid #cde4f2}.cursor-demo span{position:absolute;top:42px;left:20px;font-size:26px;transition:left .25s}.screen-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}.screen{border:2px solid #d5e2ec;border-radius:12px;padding:15px;text-align:center}.screen.best{border-color:var(--blue);background:#f0f8ff}.port-board{background:linear-gradient(140deg,#0c2743,#18456b);border-radius:16px;padding:18px;color:white}.ports{display:flex;flex-wrap:wrap;gap:9px;margin:14px 0}.port{border:1px solid #6190ae;background:#0a1e34;border-radius:9px;padding:8px 11px;color:white}.port.match{background:#155f71;border-color:var(--cyan)}.cables{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}.cable{background:#fff;color:#183754;border:1px solid #cbdae6;border-radius:999px;padding:8px 12px;font-weight:700}.cable.done{background:#dcf5ee;border-color:#8ad3bd}.sim{display:flex;gap:16px;align-items:center;flex-wrap:wrap}.status{border-radius:999px;padding:6px 10px;background:#eff4f8;font-weight:750}.status.on{background:#ddf5eb;color:#087351}.files{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:13px 0}.file{border:1px solid var(--line);background:white;border-radius:11px;padding:14px;text-align:center}.file.selected{border-color:#128d71;background:#e7faf3}.step-list{display:grid;gap:7px}.step{display:flex;justify-content:space-between;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;align-items:center}.quiz-q{border-top:1px solid var(--line);padding:15px 0}.quiz-q p{margin:4px 0 10px;font-weight:720}.choices{display:flex;gap:8px;flex-wrap:wrap}.choice{border:1px solid #cad9e5;border-radius:9px;background:#fff;padding:8px 12px}.choice.selected{border-color:var(--blue);background:#e9f5ff}.mindmap{background:#f0f8ff;border:1px solid #cde5f5;border-radius:15px;padding:16px;text-align:center}.mindmap-root{display:inline-block;background:#0c4673;color:white;border-radius:999px;padding:10px 16px;font-weight:800}.branches{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-top:15px}.branches span{padding:8px 12px;border:1px solid #aed5ea;border-radius:999px;background:white;font-weight:700}.checklist{display:grid;grid-template-columns:1fr 1fr;gap:8px}.checklist label{display:flex;align-items:center;gap:8px;background:#f7fafc;border-radius:9px;padding:9px;font-weight:550}.checklist input{width:auto}.bottom-nav{display:flex;justify-content:space-between;margin-top:18px;gap:8px}.teacher{display:none;position:fixed;inset:0;background:#06172dd9;z-index:8;overflow:auto;padding:28px}.teacher-box{max-width:1000px;margin:3vh auto;background:white;border-radius:20px;padding:24px}.teacher-head{display:flex;justify-content:space-between;align-items:center}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:18px 0}.stat{background:#f2f8fc;border:1px solid var(--line);border-radius:12px;padding:13px}.stat b{display:block;font-size:24px}.table-wrap{overflow:auto;margin-top:16px}table{border-collapse:collapse;width:100%;min-width:650px}th,td{text-align:left;padding:11px;border-bottom:1px solid var(--line)}th{background:#f4f8fc}.hint{font-size:14px;color:var(--muted)}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#0d2d4a;color:white;padding:10px 15px;border-radius:10px;box-shadow:var(--shadow);display:none;z-index:10}.break{display:none;padding:24px;margin-top:18px;background:#fff8e5;border:1px solid #f3d889;border-radius:16px}.break h3{margin:0 0 4px}.footer{text-align:center;color:#70869a;font-size:13px;margin:20px 0}.hidden{display:none!important}@media(max-width:760px){.welcome{grid-template-columns:1fr}.device-art{min-height:95px;font-size:66px}.device-art:after{display:none}.grid{grid-template-columns:1fr 1fr}.zones{grid-template-columns:1fr}.progress-card{flex-wrap:wrap}.bar{order:3;flex-basis:100%}.tabs{margin-left:-2px}.stats{grid-template-columns:1fr 1fr}.screen-pair{grid-template-columns:1fr}.form-card{align-items:stretch}.field{min-width:100%}.checklist{grid-template-columns:1fr}}@media(max-width:440px){.grid{grid-template-columns:1fr}.top{padding:14px 18px}.brand .small{display:none}.teacher{padding:10px}.teacher-box{padding:16px}}
-</style>
-</head>
-<body>
-<header class="top"><div class="brand"><span class="brand-icon">⌘</span><span>TIN HỌC 10<small class="small" style="display:block">Học bằng quan sát và thao tác</small></span></div><button class="teacher-link" id="teacherOpen">👨‍🏫 Teacher Mode</button></header>
-<main class="wrap">
-<section id="welcome">
- <div class="welcome"><div><div class="eyebrow">Bài học tương tác · 2 tiết · 90 phút</div><h1>Bài 5<br>Kết nối máy tính<br>với thiết bị số</h1><p>Máy tính kết nối được với nhiều thiết bị. Em có biết chọn đúng cổng và cách kết nối không?</p></div><div class="device-art" aria-hidden="true">💻🔌</div></div>
- <form class="form-card" id="studentForm"><div class="field"><label for="studentName">Họ và tên</label><input id="studentName" autocomplete="name" placeholder="Ví dụ: Nguyễn Văn An" required></div><div class="field"><label for="className">Lớp</label><input id="className" placeholder="Ví dụ: 10A1" required></div><button class="primary" type="submit">🚀 Bắt đầu bài học</button></form>
- <div class="resume" id="resumeBox"></div>
-</section>
-<section class="lesson" id="lesson">
- <div class="progress-card"><div class="progress-meta"><span id="progressLabel">Tiến độ của em: 0%</span><small class="small" id="studentLabel" style="display:block;color:#71859a"></small></div><div class="bar" aria-label="Tiến độ"><span id="progressBar"></span></div><div class="xp">⭐ XP: <span id="xpValue">0</span></div></div>
- <nav class="tabs" aria-label="5 phần bài học"><button class="tab active" data-tab="0"><b>01 · Khởi động</b><small>10 phút</small></button><button class="tab" data-tab="1"><b>02 · Khám phá</b><small>20 phút</small></button><button class="tab" data-tab="2"><b>03 · Cổng kết nối</b><small>15 phút</small></button><button class="tab" data-tab="3"><b>04 · Kết nối</b><small>25 phút</small></button><button class="tab" data-tab="4"><b>05 · Thử thách & Exit</b><small>20 phút</small></button></nav>
- <article class="pane active" data-pane="0"><h2>Thiết bị này làm gì?</h2><p class="lead">Chọn thiết bị, rồi phân loại theo hướng dữ liệu. Em có thể đổi câu trả lời trước khi chốt.</p><div class="activity"><strong>Chọn một thiết bị:</strong><div class="device-list" id="deviceList"></div><div class="zones"><button class="zone" data-zone="Vào"><strong>⬇ THIẾT BỊ VÀO</strong><span>Dữ liệu đi vào máy tính</span></button><button class="zone" data-zone="Ra"><strong>⬆ THIẾT BỊ RA</strong><span>Thông tin đi ra khỏi máy tính</span></button><button class="zone" data-zone="Hai chiều"><strong>↕ VÀO + RA</strong><span>Trao đổi dữ liệu hai chiều</span></button></div><div class="feedback" id="classFeedback" aria-live="polite"></div><p class="hint">Gợi ý: hãy tự hỏi dữ liệu đang đi vào hay đi ra khỏi máy tính.</p></div><div class="card"><b>Luồng thông tin</b><p>🌍 Thế giới thật → thiết bị vào → 💻 máy tính → thiết bị ra → 👤 con người</p><p><b>Câu hỏi:</b> USB chỉ là thiết bị vào hay chỉ là thiết bị ra?</p><button class="ghost" id="usbReveal">Suy nghĩ rồi xem gợi ý</button><p class="feedback" id="usbHint"></p></div><div class="bottom-nav"><span></span><button class="primary next" data-next="1">Hoàn thành chặng 1 →</button></div></article>
- <article class="pane" data-pane="1"><h2>Phòng thí nghiệm thiết bị số</h2><p class="lead">Ba trạm nhỏ giúp em đọc thông số và chọn thiết bị phù hợp.</p><div class="grid"><section class="card"><div class="icon">🖱️</div><h3>Trạm 1 · Chuột</h3><p class="muted">Thay đổi độ nhạy và quan sát con trỏ.</p><label for="dpi">Tốc độ con trỏ: <span id="dpiLabel">Vừa</span></label><input id="dpi" type="range" min="1" max="5" value="3"><div class="meterline"><span class="hint">Chậm</span><div class="bar"><span id="dpiBar"></span></div><span class="hint">Nhanh</span></div><div class="cursor-demo" id="cursorDemo"><span id="cursor">↖</span></div><p><b>Tình huống:</b> Em cần chỉnh sửa một chi tiết rất nhỏ trong ảnh. Chọn tốc độ nào?</p><div class="choices"><button class="choice" data-correct="false" data-group="mouse">Rất nhanh</button><button class="choice" data-correct="true" data-group="mouse">Vừa hoặc chậm</button><button class="choice" data-correct="false" data-group="mouse">Tốc độ nào cũng vậy</button></div><div class="feedback" data-feedback="mouse"></div></section>
- <section class="card"><div class="icon">🖥️</div><h3>Trạm 2 · Màn hình</h3><p class="muted">So sánh thông số rồi trả lời.</p><div class="screen-pair"><div class="screen"><b>Màn hình A</b><div>1366 × 768</div><div>60 Hz</div></div><div class="screen best"><b>Màn hình B</b><div>1920 × 1080</div><div>100 Hz</div></div></div><p>1920 × 1080 là thông số gì?</p><div class="choices"><button class="choice" data-correct="false" data-group="screen">Kích thước</button><button class="choice" data-correct="true" data-group="screen">Độ phân giải</button><button class="choice" data-correct="false" data-group="screen">Thời gian phản hồi</button></div><div class="feedback" data-feedback="screen"></div><p class="hint">Hz cho biết tần số quét; kích thước màn hình đo theo đường chéo, đơn vị inch.</p></section>
- <section class="card"><div class="icon">🖨️</div><h3>Trạm 3 · Máy in</h3><p class="muted">Chọn máy in phù hợp với nhu cầu.</p><label for="printUse">Em cần in ảnh màu.</label><select id="printUse"><option value="">Chọn loại máy in…</option><option value="ink">Ảnh màu</option><option value="laser">Tài liệu văn phòng</option><option value="dot">Hóa đơn nhiều liên</option></select><div class="feedback" id="printerFeedback"></div><p class="hint">Máy in có thể kết nối USB hoặc Wi‑Fi; một số máy cần driver hoặc cấu hình.</p></section></div><div class="bottom-nav"><button class="secondary prev" data-prev="0">← Quay lại</button><button class="primary next" data-next="2">Hoàn thành chặng 2 →</button></div></article>
- <article class="pane" data-pane="2"><h2>Cắm vào đâu?</h2><p class="lead">Chọn một dây kết nối, sau đó chọn cổng phù hợp trên máy tính.</p><div class="port-board"><div>💻 MẶT SAU MÁY TÍNH · Chọn đúng cổng</div><div class="ports"><button class="port" data-port="VGA">VGA</button><button class="port" data-port="HDMI">HDMI</button><button class="port" data-port="USB">USB-A / USB-C</button><button class="port" data-port="Ethernet">Ethernet · RJ45</button></div><div class="hint" style="color:#d2e6f1">VGA truyền hình ảnh tương tự, không truyền âm thanh. HDMI truyền hình ảnh và có thể truyền âm thanh.</div></div><div class="cables" id="cables"></div><div class="feedback" id="portFeedback" aria-live="polite">Chọn dây để bắt đầu.</div><div class="activity"><b>Thử nghĩ:</b> Muốn phát cả hình ảnh và âm thanh từ laptop ra TV, em chọn VGA hay HDMI?<div class="choices" style="margin-top:9px"><button class="choice" data-correct="false" data-group="hdmi">VGA</button><button class="choice" data-correct="true" data-group="hdmi">HDMI</button></div><div class="feedback" data-feedback="hdmi"></div></div><div class="break" id="checkpoint"><h3>🎯 Checkpoint · Tiết 1 hoàn thành</h3><p>Em đã khám phá thiết bị vào–ra, thông số và cổng kết nối. Tiến độ đã lưu trên thiết bị này. Tuần sau nhập lại đúng họ tên và lớp để tiếp tục.</p><button class="secondary" id="endLesson1">💾 Lưu & kết thúc tiết 1</button> <button class="ghost" id="continueLesson">Học tiếp</button></div><div class="bottom-nav"><button class="secondary prev" data-prev="1">← Quay lại</button><button class="primary next" data-next="3">Hoàn thành chặng 3 →</button></div></article>
- <article class="pane" data-pane="3"><h2>Kết nối thiết bị</h2><p class="lead">Thực hành ba tình huống: Plug & Play, trao đổi tệp qua USB và ghép đôi Bluetooth.</p><div class="grid"><section class="card"><div class="icon">🔌</div><h3>A · Plug & Play</h3><p>Cắm chuột USB vào máy tính ảo.</p><div class="sim"><span>🖱️ → 💻</span><button class="primary" id="plugButton">Cắm thiết bị</button><span class="status" id="plugStatus">Chưa kết nối</span></div><p class="hint">Plug & Play: cắm → máy nhận → có thể sử dụng. Một số thiết bị vẫn cần driver, phần mềm hoặc cấu hình.</p></section><section class="card"><div class="icon">📷</div><h3>B · USB · Sao chép ảnh</h3><p>Kết nối máy ảnh, mở thư mục <b>DCIM</b>, chọn ảnh muốn sao chép.</p><div class="sim"><button class="secondary" id="connectCamera">Kết nối máy ảnh qua USB</button><span class="status" id="cameraStatus">Chưa kết nối</span></div><div class="files hidden" id="photoFiles"><button class="file" data-file="Ảnh biển">🏝️<br>IMG_01</button><button class="file" data-file="Ảnh lớp">🏫<br>IMG_02</button><button class="file" data-file="Ảnh cây">🌳<br>IMG_03</button></div><button class="ghost hidden" id="copyPhotos">Sao chép đã chọn → Máy tính</button><div class="feedback" id="copyFeedback"></div></section><section class="card"><div class="icon">🎧</div><h3>C · Bluetooth · Ghép đôi</h3><p>Thực hiện đúng thứ tự để kết nối loa.</p><div class="sim"><span>Bluetooth: <b id="btState">OFF</b></span><button class="secondary" id="btToggle">Bật Bluetooth</button></div><button class="ghost" id="scanButton" disabled>Quét thiết bị</button><div class="feedback" id="btFeedback">Bật Bluetooth để tìm thiết bị gần đây.</div><div class="hidden" id="pairBox"><p>🔊 Speaker Mini <button class="ghost" id="pairButton">Chọn & ghép đôi</button></p></div></section></div><div class="activity"><h3 class="subhead" style="margin-top:0">Sắp xếp các bước ghép đôi</h3><p>Chọn từng bước theo đúng trình tự. Nếu chọn chưa đúng, em có thể thử lại.</p><div class="step-list" id="pairSteps"></div><div class="feedback" id="stepFeedback"></div></div><div class="bottom-nav"><button class="secondary prev" data-prev="2">← Quay lại</button><button class="primary next" data-next="4">Hoàn thành chặng 4 →</button></div></article>
- <article class="pane" data-pane="4"><h2>Thử thách cuối & Exit Ticket</h2><p class="lead">Vận dụng kiến thức, tự đánh giá mức hiểu và phác thảo sơ đồ tư duy.</p><div class="activity"><h3 class="subhead" style="margin-top:0">Mini quiz · 6 câu</h3><div id="quiz"></div><button class="primary" id="submitQuiz">Nộp bài kiểm tra</button><div class="feedback" id="quizFeedback"></div></div><div class="activity"><h3 class="subhead" style="margin-top:0">🎫 Exit Ticket · Trước khi rời lớp</h3><label for="learned">1. Hôm nay em học được điều gì? (1–2 ý)</label><textarea id="learned" rows="2" placeholder="Viết bằng lời của em…"></textarea><p><b>2. Tình huống:</b> Em muốn kết nối laptop với máy chiếu để chiếu video có cả hình và âm thanh. Em ưu tiên cổng nào?</p><select id="exitPort"><option value="">Chọn cổng…</option><option>VGA</option><option>HDMI</option><option>USB</option><option>Ethernet</option></select><label for="explain" style="margin-top:10px">Vì sao em chọn cách kết nối này?</label><textarea id="explain" rows="2" placeholder="Nêu lý do ngắn gọn…"></textarea><label style="margin-top:13px">3. Mức độ hiểu bài: 1 (còn mơ hồ) đến 5 (có thể giải thích cho bạn)</label><div class="choices" id="understanding"></div></div><div class="activity"><h3 class="subhead" style="margin-top:0">4. Vẽ sơ đồ tư duy · Hướng dẫn 5 bước</h3><ol><li>Viết <b>“Kết nối máy tính với thiết bị số”</b> ở giữa trang.</li><li>Vẽ ít nhất 4 nhánh chính: <b>Thiết bị · Thông số · Cổng · Kết nối</b>.</li><li>Thêm nhánh nhỏ bằng <b>từ khóa</b>, không chép nguyên câu dài.</li><li>Dùng màu và biểu tượng (🖱️ 🖥️ 🖨️ 🔌) để gợi nhớ.</li><li>Kiểm tra sơ đồ: có chủ đề giữa, nhánh lớn–nhỏ, ít nhất 3 hình.</li></ol><div class="mindmap"><div class="mindmap-root">💻 Kết nối máy tính<br>với thiết bị số</div><div class="branches"><span>🖱️ Thiết bị</span><span>📊 Thông số</span><span>🔌 Cổng</span><span>📶 Kết nối</span></div><p class="hint">Đây là khung gợi ý, hãy tự bổ sung nhánh con theo điều em nhớ.</p></div><div class="checklist" style="margin:14px 0"><label><input type="checkbox" class="mapcheck"> Có chủ đề ở trung tâm</label><label><input type="checkbox" class="mapcheck"> Có ít nhất 4 nhánh chính</label><label><input type="checkbox" class="mapcheck"> Dùng từ khóa, không viết đoạn văn</label><label><input type="checkbox" class="mapcheck"> Có nhánh lớn và nhánh nhỏ</label><label><input type="checkbox" class="mapcheck"> Có ít nhất 3 hình hoặc biểu tượng</label><label><input type="checkbox" class="mapcheck"> Dùng màu để phân biệt nhánh</label></div><button class="secondary" id="mapDone">✅ Em đã hoàn thành Mindmap</button><label for="importantBranch" style="margin-top:12px">Nhánh nào trong sơ đồ của em quan trọng nhất?</label><input id="importantBranch" placeholder="Ví dụ: Cổng kết nối"><label for="question" style="margin-top:12px">Em còn điều gì chưa hiểu?</label><textarea id="question" rows="2" placeholder="Ghi lại điều em muốn hỏi…"></textarea><div class="feedback" id="mapFeedback"></div></div><button class="primary" id="submitExit">Hoàn thành Exit Ticket</button><div class="feedback" id="exitFeedback"></div><div class="break" id="completeCard"><h3>🎉 Hoàn thành Bài 5</h3><p id="completeText"></p><p>✓ Thiết bị vào–ra　✓ Thông số　✓ VGA / HDMI / USB / Ethernet　✓ Plug & Play　✓ Bluetooth　✓ Mindmap</p></div><div class="bottom-nav"><button class="secondary prev" data-prev="3">← Quay lại</button><button class="ghost" id="restartLesson">Ôn tập từ đầu</button></div></article>
-</section><p class="footer" id="modeNote">Tiến độ học tập được lưu trên thiết bị này.</p>
-</main>
-<div class="teacher" id="teacherPanel" role="dialog" aria-modal="true" aria-label="Teacher Mode"><div class="teacher-box"><div class="teacher-head"><div><div class="eyebrow" style="color:#147bd1">Bảng theo dõi</div><h2 style="margin:3px 0">Teacher Mode</h2></div><button class="secondary" id="teacherClose">Đóng ✕</button></div><div id="teacherContent"><label for="teacherPin">Mã giáo viên</label><div class="sim"><input id="teacherPin" type="password" style="max-width:260px" placeholder="Nhập mã giáo viên"><button class="primary" id="teacherUnlock">Mở bảng theo dõi</button></div><p class="hint">Mã mặc định: đổi trong hằng số TEACHER_PIN bên trong index.html. Đây chỉ là khóa giao diện cơ bản.</p></div></div></div><div class="toast" id="toast" role="status"></div>
+:root{--b:#0ea5e9;--d:#0369a1;--c:#e0f7ff;--y:#fbbf24;--t:#0f172a;--g:#22c55e;--r:#ef4444}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Segoe UI",system-ui,sans-serif;background:linear-gradient(#e0f7ff,#fff 320px);color:var(--t)}
+header{position:sticky;top:0;background:#fff;box-shadow:0 2px 8px #0002;padding:8px 14px;z-index:5}
+.hr{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;font-weight:600}
+.steps{display:flex;gap:6px;margin:6px 0}
+.steps i{flex:1;text-align:center;padding:2px;border-radius:12px;background:#e2e8f0;font-style:normal;font-size:13px}
+.steps i.on{background:var(--b);color:#fff}.steps i.ok{background:var(--g);color:#fff}
+.bar{height:10px;background:#e2e8f0;border-radius:6px;overflow:hidden}
+.bar b{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--b),var(--y));transition:width .5s}
+main{max-width:960px;margin:14px auto;padding:0 12px 90px}
+.card{background:#fff;border-radius:16px;box-shadow:0 4px 14px #0369a122;padding:16px;margin:12px 0}
+h1{font-size:2.1em;text-align:center;color:var(--d);margin:.3em;line-height:1.2}
+h2{color:var(--d);margin:.2em 0}
+button,select,input,textarea{font:inherit}
+.btn{background:var(--b);color:#fff;border:0;border-radius:24px;padding:10px 20px;cursor:pointer;font-weight:700;margin:4px}
+.btn:hover{background:var(--d)}.btn:disabled{background:#94a3b8;cursor:not-allowed}
+.btn.y{background:var(--y);color:#111}
+.tag{font-size:12px;color:#64748b;background:none;border:0}
+input,textarea,select{width:100%;padding:8px;border:2px solid #bae6fd;border-radius:10px;margin:4px 0}
+.opt{display:block;width:100%;text-align:left;margin:5px 0;padding:9px 12px;border:2px solid #bae6fd;border-radius:10px;background:#fff;cursor:pointer}
+.opt:hover{background:var(--c)}.opt.good{background:#dcfce7;border-color:var(--g)}
+.opt.bad{background:#fee2e2;border-color:var(--r)}.opt:disabled{cursor:default}
+.fb{margin-top:6px;font-weight:600;color:var(--d)}
+.items,.zones{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0}
+.item{padding:10px 14px;background:var(--c);border:2px solid var(--b);border-radius:12px;cursor:grab;user-select:none;font-weight:600;touch-action:none}
+.item[data-lock]{background:#dcfce7;border-color:var(--g);cursor:default}
+.zone{flex:1;min-width:150px;min-height:110px;border:3px dashed var(--b);border-radius:14px;padding:8px;text-align:center;background:#f8fdff}
+.ghost{position:fixed;pointer-events:none;z-index:99;opacity:.85}
+.shake{animation:sh .4s}@keyframes sh{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.pop{animation:pp .6s}@keyframes pp{50%{transform:scale(1.12);box-shadow:0 0 18px var(--y)}}
+.flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;justify-content:center;font-weight:700}
+.flow span{background:var(--c);padding:8px 12px;border-radius:10px;opacity:0;animation:fi .5s forwards}
+@keyframes fi{to{opacity:1}}
+.pc{background:#334155;border-radius:14px;padding:14px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center}
+.port{min-width:120px;min-height:66px;background:#0f172a;color:#fff;border:3px dashed #64748b;border-radius:8px;padding:6px;text-align:center;font-size:14px}
+.port.ok{border:3px solid var(--g);background:#14532d}
+.desk{position:relative;height:56px;background:#0f172a;border-radius:10px;overflow:hidden}
+.dot{position:absolute;top:20px;left:4px;width:16px;height:16px;background:var(--y);border-radius:50%;transition:left .6s}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.sim{background:#0f172a;color:#7dd3fc;border-radius:12px;padding:12px;font-family:monospace;min-height:64px}
+.mm{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;text-align:center;margin-top:8px}
+.mm div{border-radius:10px;padding:8px;color:#fff;font-weight:700;font-size:14px}
+nav.n{position:fixed;bottom:0;left:0;right:0;background:#fff;box-shadow:0 -2px 8px #0002;padding:8px;display:flex;justify-content:space-between;align-items:center;z-index:5}
+table{width:100%;border-collapse:collapse}td,th{border-bottom:1px solid #e2e8f0;padding:6px;text-align:left;font-size:14px}
+.und button{font-size:15px;margin:3px;padding:8px 10px;border:2px solid #bae6fd;background:#fff;border-radius:12px;cursor:pointer}
+.und button.on{background:var(--y);border-color:var(--y)}
+@media(max-width:640px){.row,.mm{grid-template-columns:1fr}h1{font-size:1.5em}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.flow span{opacity:1}}
+</style></head><body>
+<header><div class="hr"><span>🔌 Bài 5</span><span id="xp"></span><span id="dm" class="tag"></span>
+<button class="tag" onclick="openTeacher()">👨‍🏫 Teacher Mode</button></div>
+<div id="st" hidden><div class="steps" id="sp"></div><div class="bar"><b id="pb"></b></div><div id="pt" class="tag"></div></div></header>
+<main id="v"></main><nav class="n" id="nv" hidden></nav>
 <script>
-// Cấu hình: dán URL Web App của Google Apps Script sau khi triển khai.
+"use strict";
+/* ===== CẤU HÌNH – GIÁO VIÊN CHỈNH TẠI ĐÂY ===== */
 const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxo1laO8YCyO8OyF7DqRko20Phj4txgHIslv_oPmaa8krRzjPWDiim37n-B7PU6czU3/exec";
-const TEACHER_PIN = "GV2026";
-const devices=[{name:"Bàn phím",icon:"⌨️",kind:"Vào"},{name:"Chuột",icon:"🖱️",kind:"Vào"},{name:"Máy quét",icon:"📄",kind:"Vào"},{name:"Camera",icon:"📷",kind:"Vào"},{name:"Màn hình",icon:"🖥️",kind:"Ra"},{name:"Máy in",icon:"🖨️",kind:"Ra"},{name:"Máy chiếu",icon:"📽️",kind:"Ra"},{name:"USB Flash",icon:"💾",kind:"Hai chiều"}];
-const cableData=[{label:"Màn hình cũ",port:"VGA"},{label:"TV / máy chiếu mới",port:"HDMI"},{label:"USB Flash Drive",port:"USB"},{label:"Cáp mạng",port:"Ethernet"}];
-const quizData=[
- {q:"Laptop kết nối TV để phát cả hình ảnh và âm thanh. Nên ưu tiên cổng nào?",a:["VGA","HDMI","PS/2","Ethernet"],c:1,e:"HDMI truyền tín hiệu hình ảnh và có thể truyền cả âm thanh."},
- {q:"1920 × 1080 biểu thị thông số nào của màn hình?",a:["Kích thước","Độ phân giải","Thời gian phản hồi","Tần số quét"],c:1,e:"Độ phân giải cho biết số điểm ảnh hiển thị theo chiều ngang và dọc."},
- {q:"Cắm chuột USB, máy tính tự nhận và dùng được ngay. Đây là gì?",a:["Bluetooth","Plug & Play","Ethernet","Độ phân giải"],c:1,e:"Plug & Play giúp thiết bị được nhận diện khi cắm vào; có thiết bị vẫn cần cài đặt."},
- {q:"Em chỉnh một chi tiết rất nhỏ trong ảnh. Tốc độ chuột quá cao có thể…",a:["Làm thao tác khó chính xác","Tăng độ phân giải","Tăng Hz màn hình","Không ảnh hưởng"],c:0,e:"Tốc độ phù hợp giúp điều khiển con trỏ chính xác hơn."},
- {q:"Cổng nào thường dùng để kết nối máy tính với mạng có dây?",a:["HDMI","VGA","Ethernet / RJ45","USB-B"],c:2,e:"Ethernet với đầu RJ45 kết nối máy tính vào mạng có dây."},
- {q:"Muốn ghép đôi loa Bluetooth mới, bước đầu tiên là gì?",a:["Mở thư mục DCIM","Bật Bluetooth","Chọn VGA","Cài máy in"],c:1,e:"Bật Bluetooth, tìm thiết bị, chọn loa, ghép đôi và xác nhận nếu được yêu cầu."}
-];
-const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];let student=null,state=null,selectedDevice=null,selectedCable=null,selectedUnderstanding=0,stepIndex=0;
-const keyFor=(name,cls)=>'lesson5_'+normalize(cls)+'_'+normalize(name);function normalize(s){return (s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/Đ/g,'d').toLowerCase().replace(/[^a-z0-9]+/g,'_').replace(/^_|_$/g,'')}
-function blank(){return {tab:0,done:{},xp:0,score:0,quizAnswers:{},exit:{},responses:[],completed:false,attempts:{},seen:{}}}function storageKey(){return keyFor(student.name,student.cls)}function load(){try{return {...blank(),...JSON.parse(localStorage.getItem(storageKey())||'{}')}}catch{return blank()}}function save(){if(!student||!state)return;state.updatedAt=new Date().toISOString();state.name=student.name;state.class=student.cls;state.percent=progress();localStorage.setItem(storageKey(),JSON.stringify(state));renderProgress();syncStudent();}
-function toast(msg){const t=$('#toast');t.textContent=msg;t.style.display='block';setTimeout(()=>t.style.display='none',2200)}function progress(){const d=state?.done||{};return state?.completed?100:Math.min(95,Math.round(Object.values(d).filter(Boolean).length/5*100))}function renderProgress(){$('#progressLabel').textContent=`Tiến độ của em: ${progress()}%`,$('#progressBar').style.width=progress()+'%',$('#xpValue').textContent=state?.xp||0;if(student)$('#studentLabel').textContent=`${student.name} · ${student.cls}`}
-async function api(action,payload={}){if(!GOOGLE_SCRIPT_URL||GOOGLE_SCRIPT_URL.includes('PASTE_'))return null;try{const params=new URLSearchParams({action,...payload,callback:'?'});if(action==='getTeacherData'||action==='getStudentProgress'){return await new Promise((resolve,reject)=>{const cb='cb_'+Date.now();window[cb]=d=>{delete window[cb];script.remove();resolve(d)};const script=document.createElement('script');const query={action,callback:cb};if(payload.pin)query.pin=payload.pin;if(payload.studentKey)query.studentKey=payload.studentKey;script.src=GOOGLE_SCRIPT_URL+'?'+new URLSearchParams(query);script.onerror=reject;document.body.append(script);setTimeout(()=>reject(new Error('Hết thời gian chờ')),12000)})}await fetch(GOOGLE_SCRIPT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({action,...payload})});return {ok:true,queued:true}}catch(e){console.warn('Không đồng bộ được Google Sheets:',e);return null}}
-function studentPayload(){return {...student,studentKey:storageKey()}}async function syncStudent(){if(!student||!state)return;api('saveProgress',{student:JSON.stringify(studentPayload()),progress:JSON.stringify(state),percent:String(progress())})}
-function logResponse(activity,question,answer,correct,score=0){const row={activity,question,answer,correct,score,time:new Date().toISOString()};state.responses.push(row);save();api('saveResponse',{student:JSON.stringify(studentPayload()),response:JSON.stringify(row)})}
-$('#studentName').addEventListener('input',checkResume);$('#className').addEventListener('input',checkResume);function checkResume(){const n=$('#studentName').value.trim(),c=$('#className').value.trim();if(!n||!c){$('#resumeBox').style.display='none';return}const old=JSON.parse(localStorage.getItem(keyFor(n,c))||'null');const box=$('#resumeBox');if(old&&old.done&&Object.values(old.done).some(Boolean)){box.style.display='block';box.innerHTML=`<b>Chào mừng ${escapeHtml(n)} quay trở lại!</b><br>Em đã hoàn thành ${Math.min(95,Math.round(Object.values(old.done).filter(Boolean).length/5*100))}% bài học. <button class="ghost" id="resumeBtn">▶ Tiếp tục bài học</button> <button class="ghost" id="resetBtn">↻ Học lại từ đầu</button>`;$('#resumeBtn').onclick=()=>start(n,c,false);$('#resetBtn').onclick=()=>start(n,c,true)}else box.style.display='none'}
-function escapeHtml(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
-$('#studentForm').addEventListener('submit',e=>{e.preventDefault();start($('#studentName').value.trim(),$('#className').value.trim(),false)});
-function start(name,cls,reset){student={name,cls};state=reset?blank():load();$('#welcome').style.display='none';$('#lesson').style.display='block';renderProgress();buildDeviceList();buildCables();buildQuiz();buildSteps();restoreUI();showTab(Math.min(4,state.tab||0),false);restoreRemote();window.scrollTo({top:0,behavior:'smooth'})}
-function buildDeviceList(){$('#deviceList').innerHTML=devices.map((d,i)=>`<button class="device-chip" data-device="${i}">${d.icon} ${d.name}</button>`).join('');$$('[data-device]').forEach(b=>b.onclick=()=>{$$('[data-device]').forEach(x=>x.classList.remove('selected'));b.classList.add('selected');selectedDevice=devices[+b.dataset.device];$('#classFeedback').textContent=`${selectedDevice.icon} ${selectedDevice.name} đã chọn. Em xác định hướng dữ liệu rồi chọn một khu vực.`;$('#classFeedback').className='feedback'})}
-$$('[data-zone]').forEach(b=>b.onclick=()=>{if(!selectedDevice){$('#classFeedback').textContent='Chọn thiết bị trước nhé.';return}const right=b.dataset.zone===selectedDevice.kind;const att=(state.attempts['classify_'+selectedDevice.name]||0)+1;state.attempts['classify_'+selectedDevice.name]=att;const fb=$('#classFeedback');if(right){fb.textContent=`✓ Chính xác! ${selectedDevice.name} thuộc nhóm “${selectedDevice.kind}”.`;fb.className='feedback ok';if(!state.seen['classify_'+selectedDevice.name]){state.xp+=10;state.seen['classify_'+selectedDevice.name]=true}logResponse('Phân loại thiết bị',selectedDevice.name,selectedDevice.kind,true,10)}else{fb.textContent=att<2?'Chưa đúng. Hãy nghĩ xem dữ liệu đang đi vào hay đi ra khỏi máy tính.':'Gợi ý: thiết bị vào gửi dữ liệu vào máy tính; thiết bị ra nhận thông tin từ máy tính.';fb.className='feedback bad';logResponse('Phân loại thiết bị',selectedDevice.name,b.dataset.zone,false)}save()});
-$('#usbReveal').onclick=()=>$('#usbHint').textContent='USB Flash có thể ghi và đọc dữ liệu, nên trong hoạt động này xem như trao đổi dữ liệu hai chiều.';
-function buildCables(){$('#cables').innerHTML=cableData.map((c,i)=>`<button class="cable" data-cable="${i}">🔗 ${c.label}</button>`).join('');$$('[data-cable]').forEach(b=>b.onclick=()=>{selectedCable=cableData[+b.dataset.cable];$$('[data-cable]').forEach(x=>x.style.outline='');b.style.outline='2px solid #147bd1';$('#portFeedback').textContent=`Đã chọn: ${selectedCable.label}. Giờ chọn cổng.`})}
-$$('[data-port]').forEach(b=>b.onclick=()=>{if(!selectedCable){$('#portFeedback').textContent='Hãy chọn một dây trước.';return}if(b.dataset.port===selectedCable.port){b.classList.add('match');const cb=$(`[data-cable="${cableData.indexOf(selectedCable)}"]`);cb.classList.add('done');$('#portFeedback').textContent=`✨ Kết nối thành công: ${selectedCable.label} → ${b.dataset.port}.`;$('#portFeedback').className='feedback ok';if(!state.seen['port_'+selectedCable.label])state.xp+=10;state.seen['port_'+selectedCable.label]=true;logResponse('Nối cổng',selectedCable.label,b.dataset.port,true,10);if(cableData.every(c=>state.seen['port_'+c.label])){$('#checkpoint').style.display='block';markDone(2)}}else{b.animate([{transform:'translateX(-4px)'},{transform:'translateX(4px)'},{transform:'translateX(0)'}],{duration:230});$('#portFeedback').textContent=selectedCable.port==='HDMI'?'Gợi ý: cổng phù hợp truyền cả hình ảnh và âm thanh.':'Chưa đúng. Hãy đối chiếu tên thiết bị với loại cổng.';$('#portFeedback').className='feedback bad'}save()});
-$('#dpi').oninput=e=>{const v=+e.target.value;$('#dpiLabel').textContent=['Rất chậm','Chậm','Vừa','Nhanh','Rất nhanh'][v-1];$('#dpiBar').style.width=(v*20)+'%';$('#cursor').style.left=(15+v*13)+'%'};
-$$('.choice[data-group]').forEach(b=>b.onclick=()=>{const group=b.dataset.group;$$(`[data-group="${group}"]`).forEach(x=>x.classList.remove('selected'));b.classList.add('selected');const correct=b.dataset.correct==='true';const fb=$(`[data-feedback="${group}"]`);if(fb){fb.textContent=correct?'✓ '+(group==='mouse'?'Vừa hoặc chậm giúp thao tác chính xác hơn.':group==='screen'?'1920 × 1080 là độ phân giải.':'HDMI truyền hình ảnh và âm thanh.'):'Chưa đúng. Hãy đọc lại câu hỏi và thử lựa chọn khác.';fb.className='feedback '+(correct?'ok':'bad')}if(correct){state.seen['choice_'+group]=true;logResponse('Câu hỏi nhanh',group,b.textContent,true,10);state.xp+=10;save()}});
-$('#printUse').onchange=e=>{const correct=e.target.value==='ink';$('#printerFeedback').textContent=!e.target.value?'':correct?'✓ Máy in phun thường phù hợp với ảnh màu.':'Hãy cân nhắc nhu cầu: ảnh màu, tài liệu văn phòng hay hóa đơn nhiều liên.';$('#printerFeedback').className='feedback '+(correct?'ok':'');if(correct){state.seen.printer=true;state.xp+=10;save()}};
-$('#plugButton').onclick=()=>{const s=$('#plugStatus');s.textContent='Đang nhận thiết bị…';s.classList.remove('on');setTimeout(()=>{s.textContent='✓ Device Ready';s.classList.add('on');state.seen.plug=true;state.xp+=10;save();toast('Thiết bị đã sẵn sàng.')},1200)};
-$('#connectCamera').onclick=()=>{$('#cameraStatus').textContent='✓ Đã mở DCIM';$('#cameraStatus').classList.add('on');$('#photoFiles').classList.remove('hidden');$('#copyPhotos').classList.remove('hidden');state.seen.usb=true;save()};$$('[data-file]').forEach(b=>b.onclick=()=>b.classList.toggle('selected'));$('#copyPhotos').onclick=()=>{const picks=$$('.file.selected');if(!picks.length){$('#copyFeedback').textContent='Chọn ít nhất một ảnh trong thư mục DCIM.';return}$('#copyFeedback').textContent=`✓ Đã sao chép ${picks.length} ảnh sang máy tính.`;$('#copyFeedback').className='feedback ok';state.seen.copy=true;state.xp+=10;logResponse('Sao chép qua USB','Ảnh được chọn',picks.map(x=>x.dataset.file).join(', '),true,10);save()};
-$('#btToggle').onclick=()=>{const on=$('#btState').textContent==='OFF';$('#btState').textContent=on?'ON':'OFF';$('#btState').style.color=on?'#137c63':'';$('#scanButton').disabled=!on;$('#btFeedback').textContent=on?'Bluetooth đã bật. Hãy tìm thiết bị gần em.':'Bluetooth đã tắt.';state.seen.btOn=on;save()};$('#scanButton').onclick=()=>{$('#pairBox').classList.remove('hidden');$('#btFeedback').textContent='Tìm thấy: Headphone-X · Speaker Mini · Smartphone · BT Mouse'};$('#pairButton').onclick=()=>{$('#btFeedback').textContent='Đang ghép đôi… Mã xác nhận: 5274';setTimeout(()=>{$('#btFeedback').textContent='✓ Speaker Mini đã kết nối thành công.';$('#btFeedback').className='feedback ok';state.seen.paired=true;state.xp+=10;save()},900)};
-const pairOrder=['Bật Bluetooth','Tìm thiết bị','Chọn thiết bị','Ghép đôi','Xác nhận mã','Kết nối'];function buildSteps(){const choices=[...pairOrder].sort(()=>Math.random()-.5);$('#pairSteps').innerHTML=choices.map(x=>`<button class="step" data-step="${x}"><span>${x}</span><span>＋</span></button>`).join('');$$('[data-step]').forEach(b=>b.onclick=()=>{if(b.dataset.step===pairOrder[stepIndex]){b.disabled=true;b.style.background='#e7f8f2';b.querySelector('span:last-child').textContent='✓';stepIndex++;$('#stepFeedback').textContent=stepIndex===pairOrder.length?'✓ Đúng trình tự ghép đôi!':'Đúng rồi. Chọn bước tiếp theo.';$('#stepFeedback').className='feedback ok';if(stepIndex===pairOrder.length){state.seen.steps=true;state.xp+=20;save()}}else{$('#stepFeedback').textContent='Chưa đúng thứ tự. Hãy nghĩ xem cần bật gì trước khi quét thiết bị.';$('#stepFeedback').className='feedback bad'}})}
-function buildQuiz(){$('#quiz').innerHTML=quizData.map((q,i)=>`<div class="quiz-q"><p>${i+1}. ${q.q}</p><div class="choices">${q.a.map((a,j)=>`<button class="choice" data-q="${i}" data-a="${j}">${String.fromCharCode(65+j)}. ${a}</button>`).join('')}</div><div class="feedback" id="quizfb${i}"></div></div>`).join('');$$('[data-q]').forEach(b=>b.onclick=()=>{const i=+b.dataset.q;$$(`[data-q="${i}"]`).forEach(x=>x.classList.remove('selected'));b.classList.add('selected');state.quizAnswers[i]=+b.dataset.a;save()})}
-$('#submitQuiz').onclick=()=>{let score=0,answered=0;quizData.forEach((q,i)=>{if(state.quizAnswers[i]!==undefined){answered++;const ok=state.quizAnswers[i]===q.c;if(ok)score++;const fb=$(`#quizfb${i}`);fb.textContent=(ok?'✓ Đúng. ':'Chưa đúng. ')+q.e;fb.className='feedback '+(ok?'ok':'bad');logResponse('Mini quiz',q.q,q.a[state.quizAnswers[i]],ok,ok?1:0)}});if(answered<quizData.length){$('#quizFeedback').textContent=`Em đã trả lời ${answered}/${quizData.length} câu. Hoàn thành các câu còn lại rồi nộp nhé.`;$('#quizFeedback').className='feedback bad';return}state.score=score;state.seen.quiz=true;state.xp+=50;$('#quizFeedback').textContent=`Kết quả: ${score}/${quizData.length}. Xem phần giải thích dưới từng câu để tự rút kinh nghiệm.`;$('#quizFeedback').className='feedback ok';save()};
-$('#understanding').innerHTML=[1,2,3,4,5].map(n=>`<button class="choice" data-understand="${n}">${['😕','😐','🙂','😄','🤩'][n-1]} ${n}</button>`).join('');$$('[data-understand]').forEach(b=>b.onclick=()=>{selectedUnderstanding=+b.dataset.understand;$$('[data-understand]').forEach(x=>x.classList.remove('selected'));b.classList.add('selected')});let mapComplete=false;$('#mapDone').onclick=()=>{const n=$$('.mapcheck:checked').length;if(n<4){$('#mapFeedback').textContent=`Em đã tích ${n}/6 tiêu chí. Kiểm tra sơ đồ rồi thử lại nhé.`;$('#mapFeedback').className='feedback bad';return}mapComplete=true;$('#mapFeedback').textContent='✓ Đã ghi nhận sơ đồ tư duy của em.';$('#mapFeedback').className='feedback ok';state.exit.mindmapCompleted=true;save()};
-$('#submitExit').onclick=()=>{const exit={learned:$('#learned').value.trim(),connectionAnswer:$('#exitPort').value,explanation:$('#explain').value.trim(),understanding:selectedUnderstanding,mindmapCompleted:mapComplete,importantBranch:$('#importantBranch').value.trim(),question:$('#question').value.trim()};if(!state.seen.quiz||!exit.learned||!exit.connectionAnswer||!exit.explanation||!exit.understanding||!mapComplete){$('#exitFeedback').textContent='Hoàn thành Mini Quiz, các câu Exit Ticket và tích ít nhất 4 tiêu chí Mindmap trước khi nộp.';$('#exitFeedback').className='feedback bad';return}state.exit=exit;state.completed=true;state.done[4]=true;state.xp+=30;save();api('saveExitTicket',{student:JSON.stringify(studentPayload()),ticket:JSON.stringify(exit)});$('#completeCard').style.display='block';$('#completeText').textContent=`${student.name} · ${student.cls} · Tiến độ 100% · Quiz ${state.score}/${quizData.length} · ⭐ ${state.xp} XP`;$('#exitFeedback').textContent='Đã lưu Exit Ticket. Em có thể xem lại các chặng hoặc đăng xuất để bạn khác học.';$('#exitFeedback').className='feedback ok';toast('Hoàn thành Bài 5!')};
-function markDone(i){if(!state.done[i]){state.done[i]=true;state.xp+=20;save()}}function showTab(i,persist=true){i=Math.max(0,Math.min(4,i));$$('.tab').forEach((b,k)=>b.classList.toggle('active',k===i));$$('.pane').forEach((b,k)=>b.classList.toggle('active',k===i));state.tab=i;if(persist)save();window.scrollTo({top:document.querySelector('.tabs').offsetTop-12,behavior:'smooth'})}
-$$('.tab').forEach(b=>b.onclick=()=>{const target=+b.dataset.tab;for(let i=0;i<target;i++){if(!state.done[i]){toast('Hoàn thành nhiệm vụ chặng trước rồi mới chuyển tiếp nhé.');return}}showTab(target)});$$('.next').forEach(b=>b.onclick=()=>{const cur=+$('[data-pane].active').dataset.pane;if(cur===0&&!(selectedDevice&&state.seen['classify_'+selectedDevice.name])){toast('Phân loại đúng ít nhất một thiết bị trước.');return}if(cur===1&&(['mouse','screen','printer'].filter(k=>state.seen['choice_'+k]||state.seen[k]).length<2)){toast('Hoàn thành ít nhất hai trong ba trạm trước khi tiếp tục.');return}if(cur===2&&!cableData.every(c=>state.seen['port_'+c.label])){toast('Nối cả bốn dây vào đúng cổng trước khi tiếp tục.');return}if(cur===3&&!(state.seen.plug&&state.seen.copy&&state.seen.paired&&state.seen.steps)){toast('Thử Plug & Play, sao chép ảnh qua USB, ghép đôi Bluetooth và sắp xếp đúng trình tự trước khi tiếp tục.');return}markDone(cur);if(cur===2)$('#checkpoint').style.display='block';showTab(+b.dataset.next)});$$('.prev').forEach(b=>b.onclick=()=>showTab(+b.dataset.prev));$('#endLesson1').onclick=()=>{markDone(2);toast('Đã lưu. Hẹn em ở tiết sau!');$('#lesson').style.display='none';$('#welcome').style.display='block';$('#studentForm').classList.add('hidden');$('#resumeBox').style.display='block';$('#resumeBox').innerHTML=`Đã lưu tiến độ của ${escapeHtml(student.name)} (${escapeHtml(student.cls)}). Lần sau nhập lại đúng thông tin để tiếp tục.`;window.scrollTo({top:0,behavior:'smooth'})};$('#continueLesson').onclick=()=>showTab(3);$('#restartLesson').onclick=()=>{if(confirm('Quay về chặng đầu? Tiến độ hiện tại vẫn được lưu.'))showTab(0)};
-$('#teacherOpen').onclick=()=>{$('#teacherPanel').style.display='block'};$('#teacherClose').onclick=()=>$('#teacherPanel').style.display='none';$('#teacherUnlock').onclick=async()=>{if($('#teacherPin').value!==TEACHER_PIN){toast('Mã giáo viên chưa đúng.');return}const remote=await api('getTeacherData',{pin:$('#teacherPin').value});const local=Object.keys(localStorage).filter(k=>k.startsWith('lesson5_')).map(k=>{try{return JSON.parse(localStorage.getItem(k))}catch{return null}}).filter(Boolean);const records=(remote&&remote.students)||local;renderTeacher(records,remote?.tickets||[])};
-function renderTeacher(records,tickets){const total=records.length,done=records.filter(x=>x.completed||Number(x.percent)>=100).length,avg=total?Math.round(records.reduce((s,x)=>s+Number(x.percent||0),0)/total):0,scoreRecords=records.filter(x=>Number.isFinite(Number(x.score)));const scoreAvg=scoreRecords.length?(scoreRecords.reduce((s,x)=>s+Number(x.score),0)/scoreRecords.length).toFixed(1):'—';const understandable=tickets.filter(x=>Number(x.understanding)>0);const understanding=understandable.length?(understandable.reduce((s,x)=>s+Number(x.understanding),0)/understandable.length).toFixed(1):'—';$('#teacherContent').innerHTML=`<div class="stats"><div class="stat">Học sinh<b>${total}</b></div><div class="stat">Hoàn thành<b>${done}</b></div><div class="stat">Tiến độ TB<b>${avg}%</b></div><div class="stat">Điểm quiz TB<b>${scoreAvg}</b></div></div><div class="sim"><label>Lớp <select id="filterClass"><option value="">Tất cả</option>${[...new Set(records.map(x=>x.class||x.cls).filter(Boolean))].map(c=>`<option>${escapeHtml(c)}</option>`).join('')}</select></label><label>Trạng thái <select id="filterStatus"><option value="">Tất cả</option><option value="doing">Đang học</option><option value="done">Hoàn thành</option></select></label><span>Exit Ticket: <b>${tickets.length||records.filter(x=>x.exit?.learned).length}</b> · Mức hiểu TB: <b>${understanding}/5</b></span><button class="secondary" id="refreshTeacher">🔄 Tải lại dữ liệu</button></div><div class="table-wrap"><table><thead><tr><th>Họ tên</th><th>Lớp</th><th>Tiến độ</th><th>Quiz</th><th>XP</th><th>Exit Ticket</th></tr></thead><tbody id="teacherRows"></tbody></table></div><p class="hint">Bảng từ trình duyệt này chỉ thấy dữ liệu trên thiết bị. Kết nối Apps Script để tổng hợp dữ liệu Google Sheets.</p>`;function rows(){const cls=$('#filterClass').value,status=$('#filterStatus').value;const filtered=records.filter(x=>(!cls||(x.class||x.cls)===cls)&&(!status||(status==='done'?(x.completed||Number(x.percent)>=100):!(x.completed||Number(x.percent)>=100))));$('#teacherRows').innerHTML=filtered.map(x=>`<tr><td>${escapeHtml(x.name||'')}</td><td>${escapeHtml(x.class||x.cls||'')}</td><td>${Number(x.percent||0)}%</td><td>${x.score??'—'}</td><td>${x.xp||0}</td><td>${x.exit?.learned||tickets.some(t=>t.studentKey===x.studentKey)?'✓':'—'}</td></tr>`).join('')||'<tr><td colspan="6">Chưa có dữ liệu.</td></tr>'}$('#filterClass').onchange=rows;$('#filterStatus').onchange=rows;$('#refreshTeacher').onclick=()=>$('#teacherUnlock').click();rows()}
-function restoreUI(){if(!student||!state)return;renderProgress();if(state.seen.plug)$('#plugStatus').textContent='✓ Device Ready';if(state.seen.btOn){$('#btState').textContent='ON';$('#scanButton').disabled=false}if(state.seen.paired){$('#pairBox').classList.remove('hidden');$('#btFeedback').textContent='✓ Speaker Mini đã kết nối thành công.';$('#btFeedback').className='feedback ok'}if(state.seen.usb){$('#cameraStatus').textContent='✓ Đã mở DCIM';$('#cameraStatus').classList.add('on');$('#photoFiles').classList.remove('hidden');$('#copyPhotos').classList.remove('hidden')}cableData.forEach((c,i)=>{if(state.seen['port_'+c.label]){$(`[data-cable=\"${i}\"]`)?.classList.add('done');$$('[data-port]').find(p=>p.dataset.port===c.port)?.classList.add('match')}});Object.entries(state.quizAnswers||{}).forEach(([i,a])=>$$(`[data-q=\"${i}\"]`).find(b=>+b.dataset.a===+a)?.classList.add('selected'));if(state.exit){$('#learned').value=state.exit.learned||'';$('#exitPort').value=state.exit.connectionAnswer||'';$('#explain').value=state.exit.explanation||'';$('#importantBranch').value=state.exit.importantBranch||'';$('#question').value=state.exit.question||'';selectedUnderstanding=Number(state.exit.understanding||0);$$('[data-understand]').forEach(b=>b.classList.toggle('selected',+b.dataset.understand===selectedUnderstanding));mapComplete=Boolean(state.exit.mindmapCompleted)}if(state.done?.[2])$('#checkpoint').style.display='block';if(state.completed){$('#completeCard').style.display='block';$('#completeText').textContent=`${student.name} · ${student.cls} · Tiến độ 100% · Quiz ${state.score}/${quizData.length} · ⭐ ${state.xp} XP`}}
-async function restoreRemote(){if(!student)return;const remote=await api('getStudentProgress',{studentKey:storageKey()});if(remote?.ok&&remote.progress){const remoteState=remote.progress;const localTime=Date.parse(state.updatedAt||0)||0,remoteTime=Date.parse(remoteState.updatedAt||0)||0;if(remoteTime>localTime){state={...blank(),...remoteState};localStorage.setItem(storageKey(),JSON.stringify(state));restoreUI();showTab(Math.min(4,state.tab||0),false);toast('Đã tải tiến độ đã lưu từ Google Sheets.')}}save()}
-</script>
-</body></html>
+const TEACHER_CODE = "GV2026";      // Mã Teacher Mode (chỉ là lớp bảo vệ giao diện cơ bản)
+const TEACHER_NAME = "HUỲNH VĂN DIỄN";
+const SHEET_URL = "https://docs.google.com/spreadsheets/d/1WDV22wAcsjYPfRzdpLeBXRYwlQGFZKTUloZw54P1CIQ/edit?usp=sharing";                       // Dán link Google Sheet (tuỳ chọn) để nút "Mở Google Sheets" hoạt động
+const DEMO = GOOGLE_SCRIPT_URL.indexOf("PASTE_") === 0;
+
+const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+const norm = s => s.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/đ/gi, "d").toLowerCase().replace(/[^a-z0-9]/g, "");
+const keyOf = (n, c) => "lesson5_" + norm(c) + "_" + norm(n);   // StudentKey = bài + lớp + tên
+// Nhiệm vụ từng phần: mỗi phần chiếm 20% tiến độ
+const PARTS = [["sort", "usbq"], ["mouse", "monitor", "printer"], ["ports", "why"], ["pnp", "usb", "bt"], ["quiz", "exit"]];
+let st = null, view = 1, pend = null, prevView = 1, bt = 0;
+const Q = {};
+
+/* ===== TIỆN ÍCH TRẠNG THÁI ===== */
+const newState = (n, c) => ({ key: keyOf(n, c), name: n, cls: c, part: 1, done: {}, res: {}, xp: 0, start: new Date().toISOString(), exit: null, sort: {}, ports: {}, cop: 0, why: "" });
+function pct(s) { s = s || st; let p = 0; PARTS.forEach(t => t.forEach(k => { if (s.done[k]) p += 20 / t.length })); return Math.round(p) }
+function score(s) { s = s || st; let n = 0; for (let i = 0; i < 8; i++) { const r = s.res["qz" + i]; if (r && r.s) n++ } return Math.round(n / 8 * 100) / 10 }
+function can(p) { const t = PARTS[p - 1], n = t.filter(k => st.done[k]).length; return p === 2 ? n >= 2 : n === t.length }
+function api(action, data) {
+  if (DEMO) return;
+  try { fetch(GOOGLE_SCRIPT_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain;charset=utf-8" }, body: JSON.stringify(Object.assign({ action }, data)) }).catch(() => {}) } catch (e) {}
+}
+function persist() {
+  if (!st) return;
+  st.last = new Date().toISOString();
+  localStorage.setItem(st.key, JSON.stringify(st));
+  api("saveProgress", { key: st.key, name: st.name, cls: st.cls, start: st.start, last: st.last, part: st.part, progress: pct(), score: score(), xp: st.xp, done: st.done.exit ? 1 : 0, state: JSON.stringify(st) });
+}
+function gain(n) { st.xp += n; hdr() }
+function complete(k, xp) { if (st.done[k]) return; st.done[k] = 1; gain(xp || 20); persist(); hdr(); nav() }
+function hdr() {
+  $("#dm").textContent = DEMO ? "Demo Mode – dữ liệu đang lưu trên thiết bị." : "";
+  const s = $("#st"); if (!st) { s.hidden = true; $("#xp").textContent = ""; return }
+  s.hidden = false; const p = pct();
+  $("#pb").style.width = p + "%"; $("#pt").textContent = "Tiến độ của em: " + p + "%"; $("#xp").textContent = "⭐ XP: " + st.xp;
+  $("#sp").innerHTML = [1, 2, 3, 4, 5].map(i => `<i class="${view === i ? "on" : (PARTS[i - 1].every(k => st.done[k]) ? "ok" : "")}">${i}</i>`).join("");
+}
+function nav() {
+  const n = $("#nv"); if (!st || typeof view !== "number") { n.hidden = true; return }
+  n.hidden = false; const ok = can(view);
+  n.innerHTML = `<button class="btn y" ${view < 2 ? "disabled" : ""} onclick="bk()">← Quay lại</button><span class="tag">${ok ? "Đã xong nhiệm vụ ✓" : "Hoàn thành nhiệm vụ để tiếp tục"}</span>` + (view < 5 ? `<button class="btn" ${ok ? "" : "disabled"} onclick="nx()">TIẾP TỤC →</button>` : "<span></span>");
+}
+function bk() { if (view > 1) { view--; st.part = view; render() } }
+function nx() { if (!can(view)) return; view = view === 3 ? "cp" : view + 1; if (typeof view === "number") st.part = view; persist(); render() }
+
+/* ===== KÉO THẢ (chuột + cảm ứng) ===== */
+function drag(el, drop) {
+  el.onpointerdown = e => {
+    if (el.dataset.lock) return; e.preventDefault();
+    const g = el.cloneNode(true); g.classList.add("ghost"); document.body.appendChild(g);
+    const mv = x => { g.style.left = x.clientX - 30 + "px"; g.style.top = x.clientY - 20 + "px" }; mv(e);
+    const up = x => {
+      document.removeEventListener("pointermove", mv); document.removeEventListener("pointerup", up); g.remove();
+      const t = document.elementFromPoint(x.clientX, x.clientY), z = t && t.closest("[data-zone]"); if (z) drop(el, z);
+    };
+    document.addEventListener("pointermove", mv); document.addEventListener("pointerup", up);
+  };
+}
+const shake = e => { e.classList.remove("shake"); void e.offsetWidth; e.classList.add("shake") };
+
+/* ===== CÂU HỎI TRẮC NGHIỆM CÓ GỢI Ý 2 MỨC ===== */
+function mcq(id, act, q, opts, ok, hint, exp, cb) {
+  Q[id] = { act, q, opts, ok, hint, exp, cb };
+  return `<div class="q" id="q_${id}"><b>${q}</b>${opts.map((o, i) => `<button class="opt" onclick="pick('${id}',${i})">${o}</button>`).join("")}<div class="fb" id="fb_${id}"></div></div>`;
+}
+function pick(id, i) {
+  const q = Q[id], r = st.res[id] = st.res[id] || { a: 0, ok: false, s: 0 };
+  if (r.ok) return; r.a++;
+  if (i === q.ok) return fin(id, i, r.a === 1, false);
+  const b = $$("#q_" + id + " .opt")[i]; b.classList.add("bad"); b.disabled = true;
+  if (r.a === 1) $("#fb_" + id).textContent = "Hãy xem lại: " + q.hint;
+  else if (r.a === 2) $("#fb_" + id).textContent = "Gợi ý rõ hơn: em đã loại bớt đáp án sai. Đọc lại tình huống và thử lần nữa nhé!";
+  else fin(id, q.ok, false, true);
+}
+function fin(id, i, first, rev) {
+  const q = Q[id], r = st.res[id]; r.ok = true; r.s = first ? 1 : 0;
+  $$("#q_" + id + " .opt")[i].classList.add("good"); $$("#q_" + id + " .opt").forEach(b => b.disabled = true);
+  $("#fb_" + id).textContent = (rev ? "Đáp án đúng: " : "✓ Chính xác! +" + (first ? 10 : 5) + " XP. ") + q.exp;
+  gain(first ? 10 : 5);
+  api("saveResponse", { key: st.key, name: st.name, cls: st.cls, activity: q.act, question: q.q, answer: q.opts[i], correct: 1, attempts: r.a, score: r.s });
+  persist(); if (q.cb) q.cb();
+}
+function restoreQ() { Object.keys(Q).forEach(id => { const r = st.res[id], e = $("#q_" + id); if (r && r.ok && e) { $$("#q_" + id + " .opt").forEach(b => b.disabled = true); $$("#q_" + id + " .opt")[Q[id].ok].classList.add("good"); $("#fb_" + id).textContent = "✓ " + Q[id].exp } }) }
+
+/* ===== MÀN HÌNH CHÀO / TIẾP TỤC ===== */
+function welcome() {
+  return `<div class="card" style="text-align:center"><h1>BÀI 5<br>KẾT NỐI MÁY TÍNH<br>VỚI CÁC THIẾT BỊ SỐ</h1>
+<p>👨‍🏫 Giáo viên: ${TEACHER_NAME}<br>⏱ Thời lượng: 2 tiết – 90 phút</p>
+<p><i>“Máy tính có thể kết nối với rất nhiều thiết bị.<br>Nhưng liệu em có biết phải cắm chúng vào đâu?”</i></p>
+<div style="max-width:360px;margin:auto"><input id="nm" placeholder="Họ và tên (vd: Nguyễn Văn An)"><input id="cl" placeholder="Lớp (vd: 10A1)">
+<div class="fb" id="we" style="color:var(--r)"></div><div id="wc"><button class="btn" onclick="start()">🚀 BẮT ĐẦU BÀI HỌC</button></div></div></div>`;
+}
+async function start() {
+  const n = $("#nm").value.trim().replace(/\s+/g, " "), c = $("#cl").value.trim().toUpperCase();
+  if (n.length < 2 || !c) { $("#we").textContent = "Em hãy nhập đầy đủ Họ và tên và Lớp nhé!"; return }
+  const k = keyOf(n, c); let s = null;
+  try { s = JSON.parse(localStorage.getItem(k)) } catch (e) {}
+  if (!s && !DEMO) { try { const r = await (await fetch(GOOGLE_SCRIPT_URL + "?action=getStudentProgress&key=" + encodeURIComponent(k))).json(); if (r.ok && r.found) s = JSON.parse(r.state) } catch (e) {} }
+  if (!s) return begin(newState(n, c), true);
+  pend = s;
+  $("#wc").innerHTML = `<h2>Chào mừng ${s.name} quay trở lại!</h2><p>Em đã hoàn thành ${pct(s)}% bài học.</p><button class="btn" onclick="begin(pend,false)">▶ TIẾP TỤC BÀI HỌC</button><button class="btn y" onclick="begin(newState(pend.name,pend.cls),true)">🔄 HỌC LẠI TỪ ĐẦU</button>`;
+}
+function begin(s, fresh) {
+  st = s; if (fresh) api("registerStudent", { key: st.key, name: st.name, cls: st.cls, start: st.start });
+  persist(); view = st.done.exit ? "done" : st.part; render();
+}
+
+/* ===== PHẦN 1 – KHỞI ĐỘNG ===== */
+const D = [["⌨️", "Bàn phím", "in", "Bàn phím gửi phím em gõ vào máy tính."], ["🖱", "Chuột", "in", "Chuột gửi thao tác di chuyển, bấm vào máy tính."], ["🖥", "Màn hình", "out", "Màn hình nhận hình ảnh từ máy tính để hiển thị."], ["🖨", "Máy in", "out", "Máy in nhận dữ liệu từ máy tính rồi in ra giấy."], ["📷", "Camera", "in", "Camera thu hình ảnh và đưa vào máy tính."], ["🎤", "Micro", "in", "Micro thu âm thanh đưa vào máy tính."], ["📽", "Máy chiếu", "out", "Máy chiếu đưa hình từ máy tính ra màn chiếu."], ["💾", "USB", "both", "Ổ USB vừa lưu dữ liệu vào, vừa đọc dữ liệu ra."]];
+const wr = {};
+function p1() {
+  return `<div class="card"><h2>🔌 “Thiết bị này làm gì?”</h2><p>Kéo từng thiết bị vào đúng khu vực. Hãy nghĩ: dữ liệu đang đi <b>vào</b> hay đi <b>ra</b> khỏi máy tính?</p>
+<div class="items" id="it"></div><div class="zones"><div class="zone" data-zone="in">⬇ THIẾT BỊ VÀO</div><div class="zone" data-zone="out">⬆ THIẾT BỊ RA</div><div class="zone" data-zone="both">↕ VÀO + RA</div></div><div class="fb" id="sfb"></div></div>
+<div id="flow" hidden><div class="card"><div class="flow"><span>🌍 THẾ GIỚI THẬT</span>↓<span style="animation-delay:.5s">⬇ THIẾT BỊ VÀO</span>↓<span style="animation-delay:1s">💻 MÁY TÍNH</span>↓<span style="animation-delay:1.5s">⬆ THIẾT BỊ RA</span>↓<span style="animation-delay:2s">🧑 CON NGƯỜI</span></div></div>
+<div class="card">${mcq("usbq", "P1", "USB chỉ là thiết bị vào hay chỉ là thiết bị ra?", ["Chỉ là thiết bị vào", "Chỉ là thiết bị ra", "Có thể vừa vào vừa ra, tuỳ thiết bị"], 2, "Ổ USB có thể ghi dữ liệu vào và đọc dữ liệu ra, còn chuột USB chỉ gửi dữ liệu vào.", "Cổng USB dùng cho nhiều thiết bị; ổ USB trao đổi dữ liệu hai chiều.", () => complete("usbq"))}</div></div>`;
+}
+function initSort() {
+  D.forEach(d => {
+    const e = document.createElement("div"); e.className = "item"; e.textContent = d[0] + " " + d[1]; e.dataset.n = d[1];
+    if (st.sort[d[1]]) { e.dataset.lock = 1; $('[data-zone="' + d[2] + '"]').appendChild(e) } else { $("#it").appendChild(e); drag(e, dropSort) }
+  }); sortDone();
+}
+function dropSort(el, z) {
+  const d = D.find(x => x[1] === el.dataset.n), f = $("#sfb");
+  if (d[2] === z.dataset.zone) { z.appendChild(el); el.dataset.lock = 1; st.sort[d[1]] = 1; gain(10); f.textContent = "✓ Chính xác! +10 XP"; el.classList.add("pop"); persist(); sortDone() }
+  else { wr[d[1]] = (wr[d[1]] || 0) + 1; shake(z); f.textContent = wr[d[1]] < 2 ? "Hãy suy nghĩ: dữ liệu đang đi vào hay đi ra khỏi máy tính?" : "Gợi ý: " + d[3] }
+}
+function sortDone() { if (D.every(d => st.sort[d[1]])) { $("#flow").hidden = false; complete("sort") } }
+
+/* ===== PHẦN 2 – PHÒNG THÍ NGHIỆM THIẾT BỊ SỐ ===== */
+const PR1 = [["Hóa đơn ở siêu thị", "Máy in nhiệt"], ["Tài liệu văn phòng", "Máy in laser"], ["Ảnh màu", "Máy in phun"], ["Hóa đơn nhiều liên", "Máy in kim"]];
+const PR2 = [["DPI", "Độ nét khi in"], ["PPM", "Số trang in mỗi phút"], ["A4", "Khổ giấy"], ["Color", "Khả năng in màu"], ["USB / Wi-Fi", "Phương thức kết nối"]];
+function match(id, rows) {
+  const o = rows.map(r => r[1]).reverse(), d = st.done["m_" + id];
+  return rows.map((r, i) => `<div class="row" style="align-items:center"><b>${r[0]}</b><select data-a="${r[1]}" ${d ? "disabled" : ""}><option value="">– chọn –</option>${o.map(x => `<option ${d && x === r[1] ? "selected" : ""}>${x}</option>`).join("")}</select></div>`).join("") + `<button class="btn" onclick="chk('${id}')">Kiểm tra</button><span class="fb" id="mf_${id}"></span>`;
+}
+function chk(id) {
+  const box = $("#mb_" + id); let bad = 0;
+  $$("#mb_" + id + " select").forEach(s => { const ok = s.value === s.dataset.a; s.style.borderColor = ok ? "var(--g)" : "var(--r)"; if (!ok) bad++ });
+  $("#mf_" + id).textContent = bad ? "Còn " + bad + " ô chưa đúng. Hãy đọc lại tên và ý nghĩa rồi thử lại." : "✓ Ghép đúng hết!";
+  if (!bad && !st.done["m_" + id]) { st.done["m_" + id] = 1; gain(10); persist() }
+  if (st.done.m_p1 && st.done.m_p2) complete("printer");
+}
+function p2() {
+  return `<div class="card"><h2>🧪 Phòng thí nghiệm thiết bị số</h2><p>Hoàn thành ít nhất 2 trong 3 trạm để đi tiếp.</p></div>
+<div class="card"><h2>Trạm 1 – 🖱 Chuột</h2><div class="desk"><div class="dot" id="dot"></div></div>
+<p>Tốc độ / DPI: <b id="dpi">≈ 1200 DPI</b></p><input type="range" min="1" max="10" value="3" oninput="mvDot(this.value)"><div class="tag">Chậm ←──────→ Nhanh (cùng một quãng di chuyển chuột, con trỏ chạy xa hơn khi DPI cao)</div>
+${mcq("mouse", "P2-Mouse", "Em đang chỉnh một chi tiết rất nhỏ trong bức ảnh. Em nên chọn tốc độ chuột thế nào?", ["Rất nhanh", "Vừa hoặc chậm để dễ điều khiển", "Tốc độ nào cũng giống nhau"], 1, "DPI cao không phải lúc nào cũng tốt. Thao tác chính xác cần gì?", "Tốc độ vừa hoặc chậm giúp điều khiển chính xác; DPI cao khiến con trỏ dễ “nhảy” quá đà.", () => complete("mouse"))}</div>
+<div class="card"><h2>Trạm 2 – 🖥 Màn hình</h2><div class="row"><div class="card"><b>Màn hình A</b><br>1366 × 768<br>60 Hz</div><div class="card"><b>Màn hình B</b><br>1920 × 1080<br>100 Hz</div></div>
+${mcq("mon1", "P2-Monitor", "Màn hình nào có độ phân giải cao hơn?", ["Màn hình A", "Màn hình B", "Bằng nhau"], 1, "So sánh số điểm ảnh ngang × dọc của hai màn hình.", "1920 × 1080 nhiều điểm ảnh hơn 1366 × 768.", monDone)}
+${mcq("mon2", "P2-Monitor", "100 Hz nói lên điều gì?", ["Hình ảnh được cập nhật 100 lần mỗi giây", "Màn hình dài 100 inch", "Màn hình phản hồi trong 100 ms"], 0, "Hz là đơn vị của tần số quét.", "Tần số quét cao → hình ảnh cập nhật thường xuyên hơn. Kích thước đo bằng inch (đường chéo); thời gian phản hồi đo bằng ms.", monDone)}
+<p>Kéo thanh để xem độ phân giải: <b id="rl">1280×720</b></p><input type="range" min="1" max="3" value="2" oninput="px(this.value)"><canvas id="cv" width="320" height="240" style="max-width:100%;border-radius:10px;border:2px solid var(--b)"></canvas></div>
+<div class="card"><h2>Trạm 3 – 🖨 Máy in</h2><p>Ghép nhu cầu với loại máy in phù hợp nhất:</p><div id="mb_p1">${match("p1", PR1)}</div><p>Ghép thông số với ý nghĩa:</p><div id="mb_p2">${match("p2", PR2)}</div></div>`;
+}
+function monDone() { if (st.res.mon1 && st.res.mon1.ok && st.res.mon2 && st.res.mon2.ok) complete("monitor") }
+function mvDot(v) { $("#dot").style.left = "calc(" + ((v - 1) / 9 * 92) + "% + 4px)"; $("#dpi").textContent = "≈ " + v * 400 + " DPI" }
+function px(v) {
+  v = +v; const W = [14, 36, 96][v - 1], H = Math.round(W * .75), o = document.createElement("canvas"); o.width = W; o.height = H; const x = o.getContext("2d");
+  x.fillStyle = "#7dd3fc"; x.fillRect(0, 0, W, H); x.fillStyle = "#22c55e"; x.fillRect(0, H * .7, W, H * .3);
+  x.fillStyle = "#fbbf24"; x.beginPath(); x.arc(W * .75, H * .25, H * .15, 0, 7); x.fill();
+  x.fillStyle = "#b45309"; x.fillRect(W * .2, H * .4, W * .2, H * .35); x.fillStyle = "#ef4444"; x.beginPath(); x.moveTo(W * .15, H * .4); x.lineTo(W * .3, H * .2); x.lineTo(W * .45, H * .4); x.fill();
+  const c = $("#cv"), g = c.getContext("2d"); g.imageSmoothingEnabled = false; g.clearRect(0, 0, 320, 240); g.drawImage(o, 0, 0, 320, 240);
+  $("#rl").textContent = ["640×480 (ít điểm ảnh, hình vỡ)", "1280×720 (chi tiết hơn)", "1920×1080 (rất chi tiết)"][v - 1];
+}
+
+/* ===== PHẦN 3 – CẮM VÀO ĐÂU? ===== */
+const CB = [["🖥 Màn hình cũ", "vga", "Màn hình đời cũ dùng tín hiệu tương tự, chỉ truyền hình."], ["📽 TV / máy chiếu hiện đại", "hdmi", "Cần tín hiệu số truyền cả hình lẫn tiếng, độ phân giải cao."], ["💾 USB Flash Drive", "usba", "Cổng phổ biến, đa năng nhất."], ["📱 Điện thoại đời mới", "usbc", "Đầu cáp nhỏ gọn, cắm được cả hai chiều."], ["🌐 Cáp mạng", "rj45", "Đầu nối RJ45 dùng để vào mạng có dây."]];
+const PT = [["vga", "VGA"], ["hdmi", "HDMI"], ["usba", "USB-A"], ["usbc", "USB-C"], ["rj45", "Ethernet / RJ45"]];
+function p3() {
+  return `<div class="card"><h2>🔌 “Cắm vào đâu?”</h2><p>Kéo đầu cáp đến đúng cổng ở mặt sau máy tính. (USB-B thường là đầu cáp phía máy in.)</p>
+<div class="items" id="cbl"></div><div class="pc">${PT.map(p => `<div class="port" data-zone="${p[0]}" id="pt_${p[0]}">${p[1]}</div>`).join("")}</div><div class="fb" id="pfb"></div></div>
+<div class="card">${mcq("why", "P3", "Em muốn vừa truyền hình ảnh vừa truyền âm thanh đến TV. Nên chọn VGA hay HDMI?", ["VGA", "HDMI"], 1, "VGA và HDMI đều truyền hình ảnh, điểm khác biệt quan trọng là gì?", "HDMI truyền tín hiệu số, mang cả hình ảnh và âm thanh; VGA chỉ truyền hình ảnh.", chkWhy)}
+<p><b>Vì sao?</b> (viết ngắn)</p><textarea id="wy" rows="2">${st.why || ""}</textarea><button class="btn" onclick="saveWhy()">Lưu lí do</button></div>`;
+}
+function initPorts() {
+  CB.forEach(c => {
+    const e = document.createElement("div"); e.className = "item"; e.textContent = c[0]; e.dataset.n = c[1];
+    if (st.ports[c[1]]) { e.dataset.lock = 1; $("#pt_" + c[1]).appendChild(e); $("#pt_" + c[1]).classList.add("ok") } else { $("#cbl").appendChild(e); drag(e, dropPort) }
+  }); portsDone();
+}
+function dropPort(el, z) {
+  const c = CB.find(x => x[1] === el.dataset.n), f = $("#pfb");
+  if (z.dataset.zone === c[1]) { z.appendChild(el); z.classList.add("ok", "pop"); el.dataset.lock = 1; st.ports[c[1]] = 1; gain(10); f.textContent = "✨ Kết nối thành công! +10 XP"; persist(); portsDone() }
+  else { shake(z); f.textContent = "Cổng rung lên! Gợi ý: " + c[2] }
+}
+function portsDone() { if (CB.every(c => st.ports[c[1]])) complete("ports") }
+function saveWhy() {
+  const t = $("#wy").value.trim(); if (t.length < 6) { alert("Em hãy viết lí do ngắn (ít nhất vài từ) nhé!"); return }
+  st.why = t; api("saveResponse", { key: st.key, name: st.name, cls: st.cls, activity: "P3", question: "Vì sao chọn HDMI?", answer: t, correct: 1, attempts: 1, score: 0 }); persist(); chkWhy();
+}
+function chkWhy() { if (st.res.why && st.res.why.ok && st.why && st.why.length >= 6) complete("why") }
+function cpH() {
+  return `<div class="card" style="text-align:center"><h1>🎯 CHECKPOINT – TIẾT 1 HOÀN THÀNH</h1><p>✓ Thiết bị vào – ra<br>✓ Thông số thiết bị<br>✓ Các cổng kết nối</p><h2>Tiến độ: ${pct()}%</h2>
+<p><b>Tiến độ của em đã được lưu.</b><br>Tuần sau chỉ cần nhập đúng Họ tên và Lớp để tiếp tục.</p>
+<button class="btn y" onclick="persist();st=null;view=1;render()">💾 LƯU & KẾT THÚC TIẾT 1</button><button class="btn" onclick="view=4;st.part=4;persist();render()">▶ HỌC TIẾP</button></div>`;
+}
+
+/* ===== PHẦN 4 – KẾT NỐI THIẾT BỊ ===== */
+const BS = ["Bật Bluetooth", "Tìm thiết bị", "Chọn thiết bị", "Ghép đôi", "Xác nhận mã", "Kết nối thành công"], BO = [3, 0, 5, 2, 4, 1];
+function p4() {
+  return `<div class="card"><h2>Tình huống</h2><p><i>“Thầy đưa cho em một chiếc loa Bluetooth mới. Em phải làm gì để nghe được nhạc từ máy tính?”</i></p></div>
+<div class="card"><h2>A. Plug & Play</h2><button class="btn" onclick="plug()">🖱 Cắm chuột USB vào máy</button><div class="sim" id="pns">Chưa có thiết bị.</div>
+<div id="pnq" ${st.res.pnp ? "" : "hidden"}>${mcq("pnp", "P4-A", "Điều gì vừa xảy ra?", ["Máy tính tự nhận thiết bị và dùng được ngay", "Phải cài lại hệ điều hành", "Phải mua thêm phần mềm"], 0, "Em có làm thao tác cấu hình nào không, hay chỉ cắm vào?", "PLUG & PLAY: CẮM → NHẬN → SỬ DỤNG. Nhưng không phải thiết bị nào cũng vậy: có thiết bị cần driver, phần mềm hoặc thiết lập.", () => complete("pnp"))}</div></div>
+<div class="card"><h2>B. Kết nối USB</h2><button class="btn" onclick="cam()">📷 Cắm máy ảnh vào máy tính</button><div id="ex"></div></div>
+<div class="card"><h2>C. Bluetooth</h2><div class="sim" id="bts"></div><div class="fb" id="btf"></div>
+<p><b>Kéo các bước vào đúng thứ tự:</b></p><div class="items" id="bti"></div><div id="bsl"></div></div>`;
+}
+function plug() { const s = $("#pns"); s.textContent = "Detecting device..."; setTimeout(() => { s.textContent = "✓ Device Ready"; $("#pnq").hidden = false }, 1500) }
+function cam() {
+  $("#ex").innerHTML = `<div class="sim">📷 Camera detected – hãy mở thư mục:<br><button class="btn y" onclick="dcim()">📁 DCIM</button></div><div id="ph"></div>`;
+  if (st.done.usb) $("#ph").innerHTML = "<div class='fb'>✓ Copy completed.</div>";
+}
+function dcim() {
+  $("#ph").innerHTML = `<p>Kéo ảnh cần sao chép sang máy tính:</p><div class="items" id="pi"></div><div class="zone" data-zone="pc">💻 MÁY TÍNH</div><div class="fb" id="cf"></div>`;
+  ["🌅", "🐱", "🏞", "🌸"].forEach(p => { const e = document.createElement("div"); e.className = "item"; e.textContent = p + " IMG"; $("#pi").appendChild(e); drag(e, (el, z) => { z.appendChild(el); el.dataset.lock = 1; st.cop++; $("#cf").textContent = "✓ Copy completed."; complete("usb") }) });
+}
+function btUI() {
+  const b = $("#bts"), T = [
+    `Bluetooth: OFF <button class="btn" onclick="bt=1;btUI()">Bật</button>`,
+    `Bluetooth: ON <button class="btn" onclick="bt=2;btUI()">SCAN DEVICES</button>`,
+    `Bluetooth: ON – chọn thiết bị:<br>${[["🎧", "Headphone-X"], ["🔊", "Speaker Mini"], ["📱", "Smartphone"], ["🖱", "BT Mouse"]].map(d => `<button class="btn y" onclick="btSel('${d[1]}')">${d[0]} ${d[1]}</button>`).join("")}`,
+    `PAIRING...`, `Confirm code: 5274<br><button class="btn y" onclick="bt=2;btUI()">CANCEL</button><button class="btn" onclick="bt=5;btUI()">PAIR</button>`,
+    `✓ Connected successfully – 🔊 Speaker Mini`];
+  b.innerHTML = T[bt]; if (bt === 5) { st.done.bts = 1; gain(10); persist(); btChk() }
+}
+function btSel(n) { if (n !== "Speaker Mini") { $("#btf").textContent = "Thầy đưa loa mà! Hãy chọn đúng thiết bị cần kết nối."; return } $("#btf").textContent = ""; bt = 3; btUI(); setTimeout(() => { bt = 4; btUI() }, 1200) }
+function btChk() { if (st.done.bts && st.done.bto) complete("bt") }
+function initBt() {
+  bt = st.done.bts ? 5 : 0; btUI(); const sl = $("#bsl"); sl.className = "zones";
+  BS.forEach((s, i) => { const z = document.createElement("div"); z.className = "zone"; z.dataset.zone = "s" + i; z.style.minHeight = "60px"; z.innerHTML = "<small>Bước " + (i + 1) + "</small><br>"; if (st.done.bto) z.append(s); sl.appendChild(z) });
+  if (st.done.bto) return;
+  let n = 0; BO.forEach(i => {
+    const e = document.createElement("div"); e.className = "item"; e.textContent = BS[i]; $("#bti").appendChild(e);
+    drag(e, (el, z) => { if (z.dataset.zone === "s" + i) { z.append(el); el.dataset.lock = 1; gain(5); if (++n === 6) { st.done.bto = 1; persist(); btChk() } } else { shake(z); $("#btf").textContent = "Hãy nghĩ: bước này xảy ra trước hay sau bước kia?" } });
+  });
+}
+
+/* ===== PHẦN 5 – QUIZ + EXIT TICKET ===== */
+const QZ = [
+  ["Nam muốn kết nối laptop với TV để phát cả hình ảnh và âm thanh. Nam nên ưu tiên cổng nào?", ["VGA", "HDMI", "PS/2", "Cổng micro"], 1, "VGA và HDMI đều truyền hình ảnh, điểm khác biệt quan trọng là gì?", "HDMI truyền tín hiệu số, có cả hình ảnh và âm thanh."],
+  ["Màn hình có thông số 1920 × 1080 và 100 Hz. Con số 1920 × 1080 biểu thị:", ["Kích thước", "Độ phân giải", "Thời gian phản hồi", "Khả năng kết nối"], 1, "Đây là số điểm ảnh theo chiều ngang × chiều dọc.", "Độ phân giải là số điểm ảnh (pixel) màn hình hiển thị."],
+  ["Khi cắm chuột USB, máy tính tự nhận và dùng được ngay. Đây là ví dụ về:", ["Plug & Play", "Bluetooth", "Định dạng ổ đĩa", "Mạng LAN"], 0, "Cắm → nhận → sử dụng.", "Plug & Play: cắm thiết bị, máy tính tự nhận."],
+  ["Lan cần chỉnh chi tiết rất nhỏ trong ảnh. Tốc độ chuột quá cao sẽ:", ["Giúp thao tác luôn chính xác", "Có thể khiến điều khiển khó hơn", "Làm tăng độ phân giải màn hình", "Không ảnh hưởng gì"], 1, "Con trỏ chạy quá xa khi em chỉ di chuột một chút.", "Tốc độ quá cao làm con trỏ khó điều khiển chính xác."],
+  ["Kích thước màn hình được đo bằng đường chéo, đơn vị là:", ["cm²", "inch", "Hz", "ms"], 1, "Nhớ lại: tivi 32 “__”, laptop 15,6 “__”.", "Kích thước màn hình đo bằng inch."],
+  ["Siêu thị cần in hóa đơn thanh toán trên cuộn giấy nhỏ, nhanh. Nên dùng máy in nào?", ["Máy in nhiệt", "Máy in laser", "Máy in phun", "Máy in kim"], 0, "Loại máy in này không cần mực.", "Máy in nhiệt phù hợp in hóa đơn cuộn giấy."],
+  ["Để nối máy tính vào mạng có dây, em dùng cổng nào?", ["VGA", "HDMI", "Ethernet – RJ45", "Cổng micro"], 2, "Đầu nối RJ45 dùng cho cáp mạng.", "Cổng Ethernet với đầu RJ45 kết nối máy tính vào mạng."],
+  ["Em bật Bluetooth để ghép loa không dây với laptop. Bước tiếp theo là gì?", ["Xác nhận mã", "Kết nối thành công", "Tìm thiết bị", "Cắm cáp VGA"], 2, "Phải thấy thiết bị trong danh sách trước khi chọn.", "Trình tự: bật → tìm → chọn → ghép đôi → xác nhận → kết nối."]];
+const MM = "<div class='mm'><div style='background:#0ea5e9'>THIẾT BỊ VÀO – RA</div><div style='background:#0369a1'>THÔNG SỐ</div><div style='background:#0891b2'>CỔNG KẾT NỐI</div><div style='background:#d97706'>CÁCH KẾT NỐI</div></div>";
+const CK = ["Có chủ đề ở trung tâm", "Có ít nhất 4 nhánh chính", "Dùng từ khóa, không viết đoạn văn", "Có nhánh lớn → nhánh nhỏ", "Có ít nhất 3 hình hoặc biểu tượng", "Các nhánh dùng màu sắc khác nhau"];
+function guide() {
+  return `<h2>🧠 THỬ THÁCH CUỐI – Vẽ sơ đồ tư duy Bài 5</h2><ol><li><b>Gốc:</b> viết “KẾT NỐI MÁY TÍNH VỚI THIẾT BỊ SỐ” ở giữa giấy, vẽ thêm 💻.</li><li><b>4 nhánh lớn:</b> Thiết bị vào – ra · Thông số · Cổng kết nối · Cách kết nối (chỉ dùng từ khóa).</li><li><b>Nhánh con:</b> Thiết bị (Vào, Ra, Vào+Ra) · Thông số (DPI, độ phân giải, Hz, tốc độ in) · Cổng (VGA, HDMI, USB, Ethernet) · Kết nối (Plug & Play, USB, Bluetooth, Driver).</li><li><b>Chữ thành hình:</b> Chuột 🖱, Màn hình 🖥, Máy in 🖨, Mạng 🌐, USB, Bluetooth. <i>1 hình có thể thay cho nhiều chữ.</i></li></ol><div style="text-align:center">💻 KẾT NỐI MÁY TÍNH VỚI THIẾT BỊ SỐ</div>${MM}<p class="tag">Mẫu chỉ minh họa cấu trúc, em tự hoàn thiện các nhánh con nhé.</p>`;
+}
+function p5() {
+  return `<div class="card"><h2>📝 Mini quiz</h2><div id="qs" class="tag"></div>${QZ.map((q, i) => mcq("qz" + i, "Quiz", "Câu " + (i + 1) + ". " + q[0], q[1], q[2], q[3], q[4], qzCb)).join("<hr>")}</div>
+<div class="card"><h2>🎫 EXIT TICKET – “Trước khi rời lớp...”</h2>
+<b>1. Hôm nay em học được gì?</b><textarea id="e1" rows="2" placeholder="Viết 1–2 điều quan trọng nhất em học được."></textarea>
+<b>2. Thử thách nhanh:</b> Em muốn kết nối laptop với máy chiếu để chiếu video có cả hình và âm thanh. Em ưu tiên cổng nào?
+<div>${["VGA", "HDMI", "USB", "Ethernet"].map(o => `<label style="margin-right:12px"><input type="radio" name="cn" value="${o}" style="width:auto"> ${o}</label>`).join("")}</div>
+<b>Vì sao em chọn cách kết nối này?</b><textarea id="e2" rows="2"></textarea>
+<b>3. Mức độ hiểu bài:</b><div class="und" id="und">${["😕 1 – Còn rất mơ hồ", "😐 2 – Hiểu một phần", "🙂 3 – Hiểu khá tốt", "😄 4 – Có thể tự làm", "🤩 5 – Có thể giải thích cho bạn"].map((u, i) => `<button onclick="setUnd(${i + 1})">${u}</button>`).join("")}</div></div>
+<div class="card">${guide()}<h3>Kiểm tra sơ đồ của em</h3>${CK.map(c => `<label style="display:block"><input type="checkbox" class="ck" style="width:auto" onchange="ckAll()"> ${c}</label>`).join("")}
+<button class="btn" id="mmb" disabled onclick="mmDone()">✅ EM ĐÃ HOÀN THÀNH MINDMAP</button>
+<p><b>Nhánh nào trong sơ đồ của em là quan trọng nhất?</b></p><textarea id="e3" rows="1"></textarea><p><b>Em còn điều gì chưa hiểu?</b></p><textarea id="e4" rows="2"></textarea>
+<div class="fb" id="ef" style="color:var(--r)"></div><button class="btn y" onclick="submitET()">🎫 NỘP EXIT TICKET</button></div>`;
+}
+let und = 0, mmOk = false;
+function qzCb() { const n = QZ.filter((_, i) => st.res["qz" + i] && st.res["qz" + i].ok).length; if ($("#qs")) $("#qs").textContent = "Đã làm " + n + "/" + QZ.length + " câu – điểm: " + score() + "/10"; if (n === QZ.length) complete("quiz", 50) }
+function setUnd(n) { und = n; $$("#und button").forEach((b, i) => b.classList.toggle("on", i === n - 1)) }
+function ckAll() { $("#mmb").disabled = !$$(".ck").every(c => c.checked) }
+function mmDone() { mmOk = true; $("#mmb").textContent = "✓ Đã hoàn thành mindmap"; gain(10) }
+function submitET() {
+  const e = { learned: $("#e1").value.trim(), conn: (document.querySelector("input[name=cn]:checked") || {}).value, expl: $("#e2").value.trim(), und, mind: mmOk, imp: $("#e3").value.trim(), q: $("#e4").value.trim() }, f = $("#ef");
+  if (e.learned.length < 5 || !e.conn || e.expl.length < 5 || !und || !mmOk || e.imp.length < 2) { f.textContent = "Em hãy hoàn thành: mục 1, 2 (chọn cổng + lí do), 3, xác nhận mindmap và nhánh quan trọng nhất."; return }
+  if (!st.done.quiz) { f.textContent = "Em hãy hoàn thành mini quiz trước nhé!"; return }
+  st.exit = e; api("saveExitTicket", { key: st.key, name: st.name, cls: st.cls, learned: e.learned, connection: e.conn, explanation: e.expl, understanding: e.und, mindmap: e.mind ? 1 : 0, important: e.imp, question: e.q });
+  complete("exit", 30); view = "done"; render();
+}
+function doneH() {
+  return `<div class="card" style="text-align:center"><h1>🎉 HOÀN THÀNH BÀI 5</h1><h2>${st.name} – Lớp ${st.cls}</h2><p>Tiến độ: <b>${pct()}%</b> · Điểm quiz: <b>${score()}/10</b> · ⭐ XP: <b>${st.xp}</b></p>
+<p>✓ Thiết bị vào – ra<br>✓ Thông số thiết bị<br>✓ VGA / HDMI / USB / Ethernet<br>✓ Plug & Play<br>✓ USB<br>✓ Bluetooth<br>✓ Mindmap</p>
+<p><i>“Hôm nay em không chỉ học cách cắm dây. Em đã học cách lựa chọn đúng thiết bị và đúng phương thức kết nối.”</i></p>
+<button class="btn" onclick="$('#gd').hidden=!$('#gd').hidden">🧠 XEM LẠI HƯỚNG DẪN MINDMAP</button><button class="btn y" onclick="view=1;st.part=1;render()">📚 ÔN TẬP</button><div id="gd" hidden style="text-align:left">${guide()}</div></div>`;
+}
+
+/* ===== TEACHER MODE ===== */
+function openTeacher() { if (prompt("Nhập mã giáo viên:") !== TEACHER_CODE) return; if (typeof view === "number" || view === "cp" || view === "done") prevView = view; view = "t"; teacher() }
+async function teacher() {
+  $("#nv").hidden = true; const m = $("#v"); m.innerHTML = `<div class="card">Đang tải dữ liệu...</div>`; let rows = [];
+  if (DEMO) { for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k.indexOf("lesson5_") === 0) { try { const s = JSON.parse(localStorage.getItem(k)); rows.push({ name: s.name, cls: s.cls, progress: pct(s), score: score(s), xp: s.xp, done: !!s.done.exit, exit: !!s.done.exit, und: s.exit ? s.exit.und : 0 }) } catch (e) {} } } }
+  else { try { const r = await (await fetch(GOOGLE_SCRIPT_URL + "?action=getTeacherData")).json(); rows = r.students || [] } catch (e) { m.innerHTML = `<div class="card">Không tải được dữ liệu. Kiểm tra lại URL Apps Script.</div>` } }
+  window.TR = rows; drawT();
+}
+function drawT() {
+  const rows = window.TR, cf = ($("#fc") || {}).value || "", sf = ($("#fs") || {}).value || "", cls = [...new Set(rows.map(r => r.cls))].sort();
+  const f = rows.filter(r => (!cf || r.cls === cf) && (!sf || (sf === "done") === !!r.done)), n = f.length || 1, avg = k => (f.reduce((a, r) => a + (+r[k] || 0), 0) / n).toFixed(1);
+  const ex = f.filter(r => r.exit), au = ex.length ? (ex.reduce((a, r) => a + (+r.und || 0), 0) / ex.length).toFixed(1) : "–";
+  $("#v").innerHTML = `<div class="card"><button class="btn y" onclick="view=prevView;render()">← Quay lại</button><h2>👨‍🏫 Teacher Mode</h2>
+<p>Tổng học sinh: <b>${f.length}</b> · Đã hoàn thành: <b>${f.filter(r => r.done).length}</b> · Đang học: <b>${f.filter(r => !r.done).length}</b> · Tiến độ TB: <b>${Math.round(avg("progress"))}%</b> · Điểm TB: <b>${avg("score")}/10</b> · Exit Ticket: <b>${ex.length}/${f.length}</b> · Mức hiểu TB: <b>${au}/5</b></p>
+<div class="row"><select id="fc" onchange="drawT()"><option value="">Lớp: Tất cả</option>${cls.map(c => `<option ${c === cf ? "selected" : ""}>${c}</option>`).join("")}</select><select id="fs" onchange="drawT()"><option value="">Trạng thái: Tất cả</option><option value="doing" ${sf === "doing" ? "selected" : ""}>Đang học</option><option value="done" ${sf === "done" ? "selected" : ""}>Hoàn thành</option></select></div>
+<button class="btn" onclick="teacher()">🔄 TẢI LẠI DỮ LIỆU</button><button class="btn y" onclick="SHEET_URL?window.open(SHEET_URL):alert('Chưa dán SHEET_URL trong index.html')">📊 MỞ GOOGLE SHEETS</button>
+<div style="overflow-x:auto"><table><tr><th>Họ tên</th><th>Lớp</th><th>Tiến độ</th><th>Điểm</th><th>XP</th><th>Exit Ticket</th></tr>${f.map(r => `<tr><td>${esc(r.name)}</td><td>${esc(r.cls)}</td><td>${r.progress}%</td><td>${r.score}</td><td>${r.xp}</td><td>${r.exit ? "✓" : "–"}</td></tr>`).join("")}</table></div></div>`;
+}
+const esc = s => String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+
+/* ===== VẼ GIAO DIỆN ===== */
+function render() {
+  const v = $("#v");
+  if (!st) { v.innerHTML = welcome(); hdr(); nav(); return }
+  v.innerHTML = view === "cp" ? cpH() : view === "done" ? doneH() : [0, p1, p2, p3, p4, p5][view]();
+  if (view === 1) initSort(); if (view === 2) { px(2); ["p1", "p2"].forEach(x => 0) } if (view === 3) initPorts();
+  if (view === 4) { initBt(); if (st.done.usb) cam() } if (view === 5) { qzCb() }
+  restoreQ(); hdr(); nav(); scrollTo(0, 0);
+}
+render();
+</script></body></html>
